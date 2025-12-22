@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
-export default function HeroSection() {
+export default function HeroSectionV1() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const slides = [

@@ -1,5 +1,5 @@
 import FeaturesSection from "@/components/landing/FeaturesSection";
-import HeroSection from "@/components/landing/HeroSectionV1";
+import HeroSectionV2 from "@/components/landing/HeroSectionV2";
 import ProductOverview from "@/components/landing/ProductOverview";
 import WhyChooseUs from "@/components/landing/WhyChooseUs";
 
@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <>
       <main>
-        <HeroSection/>
+        <HeroSectionV2/>
         <FeaturesSection/>
         <ProductOverview/>
         <WhyChooseUs/>
