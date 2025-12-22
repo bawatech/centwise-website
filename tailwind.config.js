@@ -6,6 +6,15 @@ module.exports = {
   ],
   theme: {
     extend: {
+      keyframes: {
+        lineFlow: {
+          '0%': { strokeDashoffset: '100' },
+          '100%': { strokeDashoffset: '0' },
+        }
+      },
+      animation: {
+        'line-flow': 'lineFlow 2s linear infinite',
+      },
       colors: {
         // Primary Brand Color - Professional Emerald Green
         // Conveys: Trust, Growth, Financial Stability, Canadian Nature

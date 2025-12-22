@@ -20,6 +20,7 @@ export default function Header() {
     { name: 'Home', href: '/' },
     { name: 'Version 2', href: '/version-2' },
     { name: 'Version 3', href: '/version-3' },
+    { name: 'Version 4', href: '/version-4' },
     { name: 'About', href: '#about' },
     { name: 'Contact', href: '/contact' },
   ];
