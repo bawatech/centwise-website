@@ -9,13 +9,15 @@ import PayrollFlow from "@/components/landing/PayrollFlow";
 import PayrollPipeline from "@/components/landing/PayrollPipeLine";
 import ProductOverview from "@/components/landing/ProductOverview";
 import WhyChooseUs from "@/components/landing/WhyChooseUs";
+import UltimatePartnerSection from "@/UltimatePartnerSection";
 
 export default function Home() {
   return (
     <>
       <main>
         <HeroSectionV1/>
-        <FeaturesSectionCompact/>
+        {/* <FeaturesSectionCompact/> */}
+        <UltimatePartnerSection/>
         <PayrollPipeline/>
         {/* <PayrollFlow/> */}
         {/* <AnimatedPayrollFlow/> */}
