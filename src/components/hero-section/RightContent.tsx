@@ -1,4 +1,4 @@
-// src/components/hero-section/RightContent.tsx (Enhanced)
+// src/components/hero-section/RightContent.tsx (Updated with Logo)
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -106,17 +106,32 @@ export default function RightContent() {
           
           {/* Screen Content */}
           <div className="bg-gradient-to-br from-white to-neutral-50 rounded-2xl overflow-hidden shadow-inner">
-            {/* Top Bar */}
-            <div className="flex items-center justify-between px-6 py-4 border-b border-neutral-100">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl base-gradient flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">PP</span>
+            {/* Top Bar - Updated with Logo Section */}
+            <div className="flex items-center justify-between px-6 py-4 border-b border-neutral-100 bg-gradient-to-r from-primary-50 to-secondary-50">
+              {/* Logo Section - Non-clickable */}
+              <div className="flex items-center gap-3 group">
+                {/* Logo Container */}
+                <div className="relative w-10 h-10 base-gradient rounded-lg flex items-center justify-center">
+                  <span className="text-white font-bold text-xl">CW</span>
+                  {/* Animated dot */}
+                  <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-accent-500 rounded-full animate-pulse shadow-sm"></span>
                 </div>
-                <div>
-                  <div className="text-lg font-bold text-neutral-900">PayrollPro</div>
-                  <div className="text-xs text-neutral-500">CRM for Accountants</div>
+
+                {/* Company Name and Slogan Container */}
+                <div className="flex flex-col">
+                  {/* Company Name */}
+                  <span className="text-lg font-bold text-neutral-900 leading-tight">
+                    Cent<span className="text-transparent bg-clip-text base-gradient">wise</span>
+                  </span>
+                  
+                  {/* Slogan */}
+                  <span className="text-xs font-medium text-neutral-600 leading-tight">
+                    For Accountants, By Accountants
+                  </span>
                 </div>
               </div>
+              
+              {/* Screen Title and Controls */}
               <div className="flex items-center gap-4">
                 <div className="text-right">
                   <div className="text-sm font-medium text-neutral-700">{screen.title}</div>
@@ -124,7 +139,7 @@ export default function RightContent() {
                 </div>
                 <button
                   onClick={() => setIsAutoPlaying(!isAutoPlaying)}
-                  className="p-2 rounded-lg bg-neutral-100 hover:bg-neutral-200 transition-colors"
+                  className="p-2 rounded-lg bg-white hover:bg-neutral-100 transition-colors shadow-sm border border-neutral-200"
                   aria-label={isAutoPlaying ? "Pause slideshow" : "Play slideshow"}
                 >
                   {isAutoPlaying ? 
