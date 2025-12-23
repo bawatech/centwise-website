@@ -2,6 +2,41 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  /* ========= BRAND TOKENS ========= */
+
+  /* Primary (Teal) */
+  --primary-50: 230 247 247;
+  --primary-100: 207 240 240;
+  --primary-200: 159 224 225;
+  --primary-300: 111 208 210;
+  --primary-400: 63 191 194;
+  --primary-500: 22 159 161;   /* #169FA1 */
+  --primary-600: 18 132 135;
+  --primary-700: 14 106 109;
+  --primary-800: 10 80 82;
+  --primary-900: 6 54 55;
+
+  /* Secondary (Blue) */
+  --secondary-500: 59 130 246;
+  --secondary-600: 37 99 235;
+
+  /* Accent (Gold) */
+  --accent-500: 255 219 88;
+  --accent-600: 235 187 0;
+
+  /* Neutral */
+  --neutral-200: 229 231 235;
+  --neutral-900: 17 24 39;
+}
+
+/* Future dark mode ready */
+.dark {
+  --neutral-200: 55 65 81;
+  --neutral-900: 229 231 235;
+}
+
+
 @layer base {
   /* Smooth scrolling */
   html {
@@ -49,6 +84,7 @@
     }
   }
 
+  
   .animate-fade-in {
     animation: fadeIn 0.6s ease-out;
   }
@@ -60,15 +96,81 @@
   .animate-pulse-soft {
     animation: pulse-soft 3s ease-in-out infinite;
   }
+  .base-gradient {
+    @apply bg-gradient-to-bl from-secondary-500 to-primary-600;
+  }
 }
 
 @layer components {
   /* Reusable component styles */
   .container-custom {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+    @apply max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8;
   }
 
   .section-padding {
     @apply py-16 sm:py-20 lg:py-24;
+  }
+}
+
+
+
+/* Add to your global.css */
+@layer utilities {
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+  .animation-delay-500 {
+    animation-delay: 500ms;
+  }
+  .animation-delay-700 {
+    animation-delay: 700ms;
+  }
+  .animation-delay-1000 {
+    animation-delay: 1000ms;
+  }
+  
+  /* Gradient text animation */
+  .gradient-text {
+    background-size: 200% 200%;
+    animation: gradient-shift 6s ease infinite;
+  }
+  
+  @keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+}
+
+/* Add to global.css */
+@layer utilities {
+  /* Carousel transitions */
+  .carousel-enter {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  
+  .carousel-enter-active {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 500ms, transform 500ms;
+  }
+  
+  .carousel-exit {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  .carousel-exit-active {
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: opacity 500ms, transform 500ms;
+  }
+  
+  /* Smooth transitions */
+  .transition-all-500 {
+    transition: all 500ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 }

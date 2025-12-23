@@ -43,7 +43,7 @@ export default function PayrollPipeline() {
         {/* Dynamic Progress Path (Primary Emerald) */}
         <div className="absolute top-6 left-0 w-full h-1.5">
           <motion.div 
-            className="h-full bg-primary-600 rounded-full shadow-primary"
+            className="h-full bg-accent-500 rounded-full shadow-primary"
             initial={{ width: "0%" }}
             animate={{ width: `${progress}%` }}
             transition={{ ease: "linear" }}
@@ -60,8 +60,8 @@ export default function PayrollPipeline() {
               <motion.div
                 initial={false}
                 animate={{
-                  backgroundColor: isCompleted ? "#059669" : "#FFFFFF", // primary.600
-                  borderColor: isCompleted ? "#059669" : "#E5E7EB",      // accent vs neutral.200
+                  backgroundColor: isCompleted ? "rgb(var(--primary-600))" : "#FFFFFF", // primary.600
+                  borderColor: isCompleted ? "rgb(var(--primary-600))" : "#E5E7EB",      // accent vs neutral.200
                   scale: isCompleted ? 1.15 : 1,
                 }}
                 className="w-12 h-12 rounded-full border-4 flex items-center justify-center transition-all duration-500 shadow-md"
@@ -122,7 +122,7 @@ function CheckIcon(props: SVGMotionProps<SVGSVGElement>) {
       xmlns="http://www.w3.org/2000/svg"
       fill="none" 
       viewBox="0 0 24 24" 
-      stroke="currentColor" 
+      stroke="#f1f1f1" 
       {...props}
     >
       <motion.path 

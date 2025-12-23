@@ -1,7 +1,8 @@
 // src/components/hero-section/HeroSection.tsx
 'use client';
 
-import { LeftContent, RightContent } from "../hero-section";
+import LeftContent from "../hero-section/LeftContent";
+import RightContent from "../hero-section/RightContent";
 
 
 export default function HeroSection() {

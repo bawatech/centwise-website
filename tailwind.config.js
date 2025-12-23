@@ -10,89 +10,52 @@ module.exports = {
         lineFlow: {
           '0%': { strokeDashoffset: '100' },
           '100%': { strokeDashoffset: '0' },
-        }
+        },
+        wave: {
+    '0%,100%': { d: 'path("M0,40 C240,100 480,0 720,40 960,80 1200,20 1440,60 L1440,0 L0,0 Z")' },
+    '50%': { d: 'path("M0,60 C240,20 480,80 720,60 960,40 1200,100 1440,60 L1440,0 L0,0 Z")' },
+  },
+  'slow-float': {
+    '0%, 100%': { transform: 'translateY(0px)' },
+    '50%': { transform: 'translateY(-24px)' },
+  }
       },
       animation: {
         'line-flow': 'lineFlow 2s linear infinite',
+        wave: 'wave 8s ease-in-out infinite',
+         'slow-float': 'slow-float 18s ease-in-out infinite'
       },
       colors: {
-        // Primary Brand Color - Professional Emerald Green
-        // Conveys: Trust, Growth, Financial Stability, Canadian Nature
-        primary: {
-          DEFAULT: '#059669', // Emerald-600 - Main brand color
-          50: '#ECFDF5',      // Lightest - backgrounds, subtle highlights
-          100: '#D1FAE5',     // Very light - hover states, cards
-          200: '#A7F3D0',     // Light - badges, tags
-          300: '#6EE7B7',     // Medium light - accents
-          400: '#34D399',     // Medium - interactive elements
-          500: '#10B981',     // Balanced green
-          600: '#059669',     // ← Base brand color (main CTAs, links)
-          700: '#047857',     // Darker - hover states, pressed buttons
-          800: '#065F46',     // Deep - text on light backgrounds
-          900: '#064E3B',     // Deepest - headings, emphasis
-        },
+  primary: {
+    DEFAULT: 'rgb(var(--primary-500) / <alpha-value>)',
+    50: 'rgb(var(--primary-50) / <alpha-value>)',
+    100: 'rgb(var(--primary-100) / <alpha-value>)',
+    200: 'rgb(var(--primary-200) / <alpha-value>)',
+    300: 'rgb(var(--primary-300) / <alpha-value>)',
+    400: 'rgb(var(--primary-400) / <alpha-value>)',
+    500: 'rgb(var(--primary-500) / <alpha-value>)',
+    600: 'rgb(var(--primary-600) / <alpha-value>)',
+    700: 'rgb(var(--primary-700) / <alpha-value>)',
+    800: 'rgb(var(--primary-800) / <alpha-value>)',
+    900: 'rgb(var(--primary-900) / <alpha-value>)',
+  },
 
-        // Secondary Accent - Golden Yellow
-        // Conveys: Premium, Attention, Highlight, Call-to-Action
-        // Use sparingly for important CTAs and highlights
-        accent: {
-          DEFAULT: '#FFDB58', // Your specified yellow
-          50: '#FFFBEB',      // Pale yellow - subtle backgrounds
-          100: '#FFF4CC',     // Very light
-          200: '#FFE999',     // Light
-          300: '#FFDE66',     // Medium light
-          400: '#FFD633',     // Medium
-          500: '#FFDB58',     // ← Base accent (primary CTAs, highlights)
-          600: '#EBBB00',     // Deeper gold
-          700: '#C29A00',     // Dark gold - hover states
-          800: '#997A00',     // Very dark
-          900: '#705A00',     // Deepest
-        },
+  secondary: {
+    500: 'rgb(var(--secondary-500) / <alpha-value>)',
+    600: 'rgb(var(--secondary-600) / <alpha-value>)',
+  },
 
-        // Neutral Grays - Professional & Clean
-        // For text, borders, backgrounds
-        neutral: {
-          DEFAULT: '#6B7280', // Gray-500
-          50: '#F9FAFB',      // Almost white - page backgrounds
-          100: '#F3F4F6',     // Very light gray - card backgrounds
-          200: '#E5E7EB',     // Light gray - borders, dividers
-          300: '#D1D5DB',     // Medium light - disabled states
-          400: '#9CA3AF',     // Medium - placeholders, secondary text
-          500: '#6B7280',     // Balanced gray - body text
-          600: '#4B5563',     // Dark - headings, labels
-          700: '#374151',     // Darker - primary headings
-          800: '#1F2937',     // Very dark - emphasis text
-          900: '#111827',     // Almost black - hero headings
-        },
+  accent: {
+    500: 'rgb(var(--accent-500) / <alpha-value>)',
+    600: 'rgb(var(--accent-600) / <alpha-value>)',
+  },
 
-        // Success - For confirmations, completed states
-        success: {
-          DEFAULT: '#10B981',
-          light: '#D1FAE5',
-          dark: '#047857',
-        },
-
-        // Error - For validation, alerts
-        error: {
-          DEFAULT: '#EF4444',
-          light: '#FEE2E2',
-          dark: '#DC2626',
-        },
-
-        // Warning - For cautions, pending states
-        warning: {
-          DEFAULT: '#F59E0B',
-          light: '#FEF3C7',
-          dark: '#D97706',
-        },
-
-        // Info - For informational messages
-        info: {
-          DEFAULT: '#3B82F6',
-          light: '#DBEAFE',
-          dark: '#2563EB',
-        },
-      },
+  neutral: {
+    200: 'rgb(var(--neutral-200) / <alpha-value>)',
+    900: 'rgb(var(--neutral-900) / <alpha-value>)',
+  },
+}
+,
 
       // Custom background gradients
       backgroundImage: {

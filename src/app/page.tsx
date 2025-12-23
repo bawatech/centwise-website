@@ -1,4 +1,5 @@
 import ContinuousWorkflow from "@/components/landing/ContinuousWorkflow";
+import CurvedSection from "@/components/landing/CurvedSection";
 import FeaturesSection from "@/components/landing/FeaturesSection";
 import HeroSectionV1 from "@/components/landing/HeroSectionV1";
 import HowItWorks from "@/components/landing/HowItWorks";
@@ -22,6 +23,7 @@ export default function Home() {
         <ProductOverview/>
         <HowItWorks/>
         <Integrations/>
+        {/* <CurvedSection/> */}
         <WhyChooseUs/>
       </main>
     </>
