@@ -1,6 +1,7 @@
 import ContinuousWorkflow from "@/components/landing/ContinuousWorkflow";
 import CurvedSection from "@/components/landing/CurvedSection";
 import FeaturesSection from "@/components/landing/FeaturesSection";
+import FeaturesSectionCompact from "@/components/landing/FeaturesSectionCompact";
 import HeroSectionV1 from "@/components/landing/HeroSectionV1";
 import HowItWorks from "@/components/landing/HowItWorks";
 import Integrations from "@/components/landing/Integrations";
@@ -14,6 +15,7 @@ export default function Home() {
     <>
       <main>
         <HeroSectionV1/>
+        <FeaturesSectionCompact/>
         <PayrollPipeline/>
         {/* <PayrollFlow/> */}
         {/* <AnimatedPayrollFlow/> */}
