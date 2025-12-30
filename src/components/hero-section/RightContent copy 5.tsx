@@ -8,9 +8,10 @@ export default function RightContent() {
   const [currentScreen, setCurrentScreen] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
   const [imageErrors, setImageErrors] = useState<Record<number, boolean>>({});
-  const [cursorPosition, setCursorPosition] = useState({ x: 50, y: 50 });
+  const [cursorPosition, setCursorPosition] = useState({ x: 50, y: 50 }); // Start from center
   const [showCursor, setShowCursor] = useState(true);
   const [showClickEffect, setShowClickEffect] = useState(false);
+  const [clickPosition, setClickPosition] = useState({ x: 0, y: 0 });
   const [cursorVisible, setCursorVisible] = useState(true);
   const [cursorClicking, setCursorClicking] = useState(false);
   
@@ -20,7 +21,7 @@ export default function RightContent() {
   const slideTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const blinkIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const cycleRef = useRef<number>(0);
-  const lastClickPosition = useRef({ x: 50, y: 50 });
+  const lastClickPosition = useRef({ x: 50, y: 50 }); // Track last click position
 
   /* ---------------- Image Slides ---------------- */
   const screenshots = [
@@ -30,7 +31,7 @@ export default function RightContent() {
       image: "/screenshots/dashboard.png",
       fallbackColor: "bg-gradient-to-br from-blue-500 to-blue-700",
       clickPoint: { x: 230, y: 380 },
-      cursorStart: { x: 50, y: 50 }
+      cursorStart: { x: 50, y: 50 } // Start from center for first screen
     },
     {
       id: 2,
@@ -38,7 +39,7 @@ export default function RightContent() {
       image: "/screenshots/employees.png",
       fallbackColor: "bg-gradient-to-br from-green-500 to-green-700",
       clickPoint: { x: 1700, y: 250 },
-      cursorStart: null
+      cursorStart: null // Will use previous click position
     },
     {
       id: 3,
@@ -46,14 +47,14 @@ export default function RightContent() {
       image: "/screenshots/add-employee.png",
       fallbackColor: "bg-gradient-to-br from-purple-500 to-purple-700",
       clickPoint: { x: 750, y: 720 },
-      cursorStart: null
+      cursorStart: null // Will use previous click position
     },
     {
       id: 4,
       title: "Add Employee Form",
       image: "/screenshots/add-employee-form.png",
       fallbackColor: "bg-gradient-to-br from-orange-500 to-orange-700",
-      clickPoint: null,
+      clickPoint: null, // No click on 4th screen
       cursorStart: null
     }
   ];
@@ -84,6 +85,7 @@ export default function RightContent() {
 
   /* ---------------- Cursor Blink Effect ---------------- */
   useEffect(() => {
+    // Cursor blinking effect
     blinkIntervalRef.current = setInterval(() => {
       setCursorVisible(prev => !prev);
     }, 800);
@@ -102,6 +104,7 @@ export default function RightContent() {
         const elapsed = Date.now() - startTime;
         const progress = Math.min(elapsed / duration, 1);
         
+        // Easing function for natural movement
         const easeOutCubic = 1 - Math.pow(1 - progress, 3);
         
         const currentX = startX + (endX - startX) * easeOutCubic;
@@ -110,7 +113,7 @@ export default function RightContent() {
         setCursorPosition({ x: currentX, y: currentY });
         
         if (progress < 1) {
-          cursorAnimationRef.current = setTimeout(animate, 16);
+          cursorAnimationRef.current = setTimeout(animate, 16); // ~60fps
         } else {
           resolve();
         }
@@ -129,18 +132,23 @@ export default function RightContent() {
     
     const screenData = screenshots[screenIndex];
     
+    // Check if this screen has a click point
     if (!screenData.clickPoint) {
+      // For 4th screen (no click), just wait and restart cycle
       slideTimeoutRef.current = setTimeout(() => {
+        // Wait 2 seconds on 4th screen, then restart
         setCurrentScreen(0);
         setIsAnimating(false);
         setShowCursor(false);
         
+        // Reset to starting position for next cycle
         lastClickPosition.current = { x: 50, y: 50 };
         setCursorPosition({ x: 50, y: 50 });
         
+        // Start next cycle after delay
         setTimeout(() => {
           cycleRef.current++;
-          if (cycleRef.current < 10) {
+          if (cycleRef.current < 10) { // Prevent infinite loops during dev
             startCursorAnimation(0);
           }
         }, 1000);
@@ -150,9 +158,11 @@ export default function RightContent() {
     
     const clickPoint = screenData.clickPoint;
     
+    // Calculate percentage positions based on 1920x1080 coordinates
     const targetX = (clickPoint.x / 1920) * 100;
     const targetY = (clickPoint.y / 1080) * 100;
     
+    // Determine starting position
     let startX, startY;
     if (screenData.cursorStart) {
       startX = screenData.cursorStart.x;
@@ -162,29 +172,42 @@ export default function RightContent() {
       startY = lastClickPosition.current.y;
     }
     
+    // Set cursor to starting position
     setCursorPosition({ x: startX, y: startY });
     
+    // Pause briefly before moving
     await new Promise(resolve => setTimeout(resolve, 300));
     
     try {
+      // Animate cursor to click position with natural movement
       await animateCursorMove(startX, startY, targetX, targetY);
       
+      // Pause briefly at target (like human hesitation)
       await new Promise(resolve => setTimeout(resolve, 300));
       
-      // Trigger click effect
+      // Show click animation
       setCursorClicking(true);
+      setShowClickEffect(true);
+      setClickPosition({ x: targetX, y: targetY });
       
+      // Store this click position for next movement
       lastClickPosition.current = { x: targetX, y: targetY };
       
-      await new Promise(resolve => setTimeout(resolve, 200));
-      
-      setCursorClicking(false);
-      
+      // Wait for click animation
       await new Promise(resolve => setTimeout(resolve, 300));
       
+      // Stop clicking state
+      setCursorClicking(false);
+      setShowClickEffect(false);
+      
+      // Pause before transition
+      await new Promise(resolve => setTimeout(resolve, 400));
+      
+      // Move to next screen
       const nextScreenIndex = screenIndex + 1;
       setCurrentScreen(nextScreenIndex);
       
+      // Start next animation after delay
       setTimeout(() => {
         startCursorAnimation(nextScreenIndex);
       }, 500);
@@ -196,6 +219,7 @@ export default function RightContent() {
 
   /* ---------------- Start Animation Sequence ---------------- */
   useEffect(() => {
+    // Start first animation after initial delay
     const startDelay = setTimeout(() => {
       startCursorAnimation(0);
     }, 1000);
@@ -214,6 +238,7 @@ export default function RightContent() {
     setCurrentScreen(0);
     lastClickPosition.current = { x: 50, y: 50 };
     setCursorPosition({ x: 50, y: 50 });
+    setShowClickEffect(false);
     setShowCursor(false);
     setCursorClicking(false);
     setIsAnimating(false);
@@ -222,6 +247,7 @@ export default function RightContent() {
     if (clickAnimationRef.current) clearTimeout(clickAnimationRef.current);
     if (slideTimeoutRef.current) clearTimeout(slideTimeoutRef.current);
     
+    // Restart animation
     setTimeout(() => {
       startCursorAnimation(0);
     }, 500);
@@ -253,7 +279,7 @@ export default function RightContent() {
                 ref={screenContainerRef}
                 className="relative overflow-hidden bg-black"
                 style={{
-                  aspectRatio: '16/9'
+                  aspectRatio: '16/9' // 1920x1080 = 16:9
                 }}
               >
                 {screenshots.map((screen, index) => (
@@ -265,6 +291,7 @@ export default function RightContent() {
                         : 'opacity-0 z-0'
                     }`}
                   >
+                    {/* Image or Fallback */}
                     <div className="relative w-full h-full">
                       {!imageErrors[screen.id] ? (
                         <Image
@@ -289,125 +316,111 @@ export default function RightContent() {
                   </div>
                 ))}
 
-                {/* Clean, Professional Cursor */}
+                {/* Realistic Cursor */}
                 {showCursor && screenshots[currentScreen]?.clickPoint && (
-  <div 
-    className="absolute z-30 pointer-events-none"
-    style={{
-      left: `${cursorPosition.x}%`,
-      top: `${cursorPosition.y}%`,
-      transform: 'translate(-50%, -50%)'
-    }}
-  >
-    <div className={`relative transition-transform duration-100 ${cursorClicking ? 'scale-75' : 'scale-100'}`}>
-      {/* Simple, clean cursor */}
-  <svg
-  width="24"
-  height="24"
-  viewBox="0 0 48 48"
-  fill="none"
-  className="drop-shadow-lg"
->
-  {/* Shadow */}
-  <path
-    d="M8 6
-       L30 17
-       C31.2 17.6 31.2 19.4 30 20.2
-       L22.5 25
-       L29 31.5
-       C29.8 32.3 29.8 33.7 29 34.5
-       L26.5 37
-       C25.7 37.8 24.3 37.8 23.5 37
-       L17 30.5
-       L12.2 35.3
-       C11.2 36.3 9.6 35.7 9.4 34.3
-       L6.5 9.2
-       C6.3 7.6 7 6.4 8 6Z"
-    fill="rgba(0,0,0,0.25)"
-    transform="translate(1,1)"
-  />
-
-  {/* Cursor body (center-aligned tail) */}
-  <path
-    d="M8 6
-       L30 17
-       C31.2 17.6 31.2 19.4 30 20.2
-       L22.5 25
-       L29 31.5
-       C29.8 32.3 29.8 33.7 29 34.5
-       L26.5 37
-       C25.7 37.8 24.3 37.8 23.5 37
-       L17 30.5
-       L12.2 35.3
-       C11.2 36.3 9.6 35.7 9.4 34.3
-       L6.5 9.2
-       C6.3 7.6 7 6.4 8 6Z"
-    fill="white"
-    stroke="#1F2A44"
-    strokeWidth="2.1"
-    strokeLinejoin="round"
-    strokeLinecap="round"
-  />
-
-  {/* Tip dot */}
-  <circle
-    cx="9"
-    cy="8.8"
-    r="1.6"
-    fill={cursorClicking ? '#DC2626' : '#2563EB'}
-    className="transition-colors duration-150"
-  />
-</svg>
-
-
-
-      
-      {/* Optional: Subtle glow during click */}
-      {cursorClicking && (
-        <div className="absolute -inset-1 rounded-full bg-blue-500/20 blur-sm animate-ping"></div>
-      )}
-    </div>
-  </div>
-)}
-
-
-                {/* Click Ripple Effect */}
-                {cursorClicking && screenshots[currentScreen]?.clickPoint && (
                   <div 
-                    className="absolute z-20 pointer-events-none"
+                    className="absolute z-30 pointer-events-none"
                     style={{
                       left: `${cursorPosition.x}%`,
                       top: `${cursorPosition.y}%`,
+                      transform: 'translate(-50%, -50%)',
+                      filter: 'drop-shadow(0 0 2px rgba(0,0,0,0.5))'
+                    }}
+                  >
+                    {/* Realistic Mouse Pointer */}
+                    <svg 
+                      width="32" 
+                      height="32" 
+                      viewBox="0 0 32 32" 
+                      fill="none"
+                      className={`transition-transform duration-150 ${cursorClicking ? 'scale-90' : 'scale-100'}`}
+                    >
+                      {/* Cursor shadow */}
+                      <path 
+                        d="M4 4L12 20L14.5 17L24 24L18 12L21 9L4 4Z" 
+                        fill="rgba(0,0,0,0.3)"
+                        transform="translate(1, 1)"
+                      />
+                      {/* Cursor body */}
+                      <path 
+                        d="M4 4L12 20L14.5 17L24 24L18 12L21 9L4 4Z" 
+                        fill="white"
+                        stroke="#333"
+                        strokeWidth="0.5"
+                      />
+                      {/* Cursor tip highlight */}
+                      <path 
+                        d="M4 4L7 7L5.5 5.5L4 4Z" 
+                        fill="#3B82F6"
+                      />
+                      {/* Blinking cursor dot (when not moving) */}
+                      {cursorVisible && !isAnimating && (
+                        <circle 
+                          cx="5" 
+                          cy="5" 
+                          r="1.5" 
+                          fill="#3B82F6"
+                          className="opacity-70"
+                        />
+                      )}
+                    </svg>
+                  </div>
+                )}
+
+                {/* Enhanced Click Effect */}
+                {showClickEffect && (
+                  <div 
+                    className="absolute z-20 pointer-events-none"
+                    style={{
+                      left: `${clickPosition.x}%`,
+                      top: `${clickPosition.y}%`,
                       transform: 'translate(-50%, -50%)'
                     }}
                   >
+                    {/* Multiple ripple waves for realistic effect */}
                     <div className="relative">
-                      {/* Single expanding ripple */}
-                      <div className="absolute rounded-full bg-blue-500/40"
+                      {/* First wave - fast and small */}
+                      <div className="absolute rounded-full bg-blue-400/40"
                         style={{
-                          width: '20px',
-                          height: '20px',
-                          animation: 'clickRipple 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards',
+                          width: '30px',
+                          height: '30px',
+                          animation: 'ripple1 0.6s ease-out forwards',
                         }}
                       />
                       
-                      {/* Subtle second ripple */}
-                      <div className="absolute rounded-full bg-blue-400/30"
+                      {/* Second wave - slower and larger */}
+                      <div className="absolute rounded-full bg-blue-500/30"
                         style={{
-                          width: '20px',
-                          height: '20px',
-                          animation: 'clickRipple2 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.1s forwards',
+                          width: '30px',
+                          height: '30px',
+                          animation: 'ripple2 0.8s ease-out 0.1s forwards',
+                        }}
+                      />
+                      
+                      {/* Third wave - slowest and largest */}
+                      <div className="absolute rounded-full bg-blue-600/20"
+                        style={{
+                          width: '30px',
+                          height: '30px',
+                          animation: 'ripple3 1s ease-out 0.2s forwards',
+                        }}
+                      />
+                      
+                      {/* Center dot */}
+                      <div className="relative w-3 h-3 rounded-full bg-white shadow-lg"
+                        style={{
+                          animation: 'clickDot 0.3s ease-out'
                         }}
                       />
                     </div>
                   </div>
                 )}
 
-                {/* Debug markers (optional for development) */}
+                {/* Debug: Show click points (development only) */}
                 {process.env.NODE_ENV === 'development' && screenshots[currentScreen]?.clickPoint && (
-                  <div className="absolute">
+                  <div className="absolute pointer-events-none">
                     <div
-                      className="absolute w-1.5 h-1.5 bg-red-500/70 rounded-full border border-white"
+                      className="absolute w-2 h-2 rounded-full bg-green-500/50 border border-white"
                       style={{
                         left: `${(screenshots[currentScreen].clickPoint!.x / 1920) * 100}%`,
                         top: `${(screenshots[currentScreen].clickPoint!.y / 1080) * 100}%`,
@@ -425,12 +438,13 @@ export default function RightContent() {
 
           {/* ================= BASE ================= */}
           <div className="relative mx-auto w-[96%] h-8 bg-gradient-to-b from-gray-300 to-gray-400 rounded-b-2xl shadow-xl">
+            {/* Trackpad indicator */}
             <div className="absolute top-3 left-1/2 -translate-x-1/2 w-1/2 h-1.5 bg-gradient-to-r from-transparent via-gray-200 to-transparent rounded-full" />
           </div>
         </div>
 
-        {/* Controls */}
-        {/* <div className="mt-8 flex flex-col items-center gap-4">
+        {/* Cycle Counter & Restart Button */}
+        <div className="mt-8 flex flex-col items-center gap-4">
           <div className="text-sm text-gray-600 flex items-center gap-2">
             <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
             <span>Cycle: {cycleRef.current + 1} | Screen: {currentScreen + 1} of {screenshots.length}</span>
@@ -444,15 +458,37 @@ export default function RightContent() {
             </svg>
             Restart Demo
           </button>
-        </div> */}
+        </div>
       </div>
 
-      {/* CSS Animations */}
+      {/* Add CSS for enhanced animations */}
       <style jsx>{`
-        @keyframes clickRipple {
+        @keyframes ripple1 {
           0% {
             transform: translate(-50%, -50%) scale(0.8);
             opacity: 0.8;
+          }
+          100% {
+            transform: translate(-50%, -50%) scale(2.5);
+            opacity: 0;
+          }
+        }
+        
+        @keyframes ripple2 {
+          0% {
+            transform: translate(-50%, -50%) scale(0.8);
+            opacity: 0.6;
+          }
+          100% {
+            transform: translate(-50%, -50%) scale(3);
+            opacity: 0;
+          }
+        }
+        
+        @keyframes ripple3 {
+          0% {
+            transform: translate(-50%, -50%) scale(0.8);
+            opacity: 0.4;
           }
           100% {
             transform: translate(-50%, -50%) scale(3.5);
@@ -460,23 +496,31 @@ export default function RightContent() {
           }
         }
         
-        @keyframes clickRipple2 {
+        @keyframes clickDot {
           0% {
-            transform: translate(-50%, -50%) scale(0.8);
-            opacity: 0.6;
+            transform: translate(-50%, -50%) scale(0);
+            opacity: 0;
+          }
+          50% {
+            transform: translate(-50%, -50%) scale(1.2);
+            opacity: 1;
           }
           100% {
-            transform: translate(-50%, -50%) scale(4.5);
-            opacity: 0;
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
           }
         }
         
+        .cursor-blink {
+          animation: cursorBlink 1s infinite;
+        }
+        
         @keyframes cursorBlink {
-          0%, 70% {
+          0%, 50% {
             opacity: 1;
           }
-          71%, 100% {
-            opacity: 0.7;
+          51%, 100% {
+            opacity: 0.3;
           }
         }
       `}</style>

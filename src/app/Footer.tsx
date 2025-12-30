@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 
 export default function Footer() {
@@ -12,12 +13,19 @@ export default function Footer() {
           {/* Company Info */}
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center space-x-3 mb-4">
-              <div className="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">CW</span>
-              </div>
-              <span className="text-2xl font-bold text-white">
-                Cent<span className="text-primary-400">wise</span>
-              </span>
+              <Link href="/">
+  {/* Logo */}
+  <div className="relative w-[350px] sm:w-[320px] md:w-[300px] h-[72px] bg-white rounded-lg">
+    <Image
+      src="/centvise-logo-with-slogan.png"
+      alt="Centvise logo"
+      fill
+      className="object-contain"
+      priority
+    />
+  </div>
+
+</Link>
             </div>
             <p className="text-neutral-400 leading-relaxed max-w-md mb-6">
               Canadian-built payroll and CRM solutions designed specifically for accounting professionals. 

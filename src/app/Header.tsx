@@ -39,7 +39,7 @@ export default function Header() {
       <div className="container-custom">
         <div className="flex items-center justify-between">
           
-<Link href="/" className="flex flex-col items-start">
+<Link href="/">
   {/* Logo */}
   <div className="relative w-[350px] sm:w-[320px] md:w-[300px] h-[72px]">
     <Image
