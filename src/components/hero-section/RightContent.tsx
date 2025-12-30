@@ -1,59 +1,38 @@
+// components/RightContent.tsx
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
 import { ChevronLeft, ChevronRight, Play, Pause } from 'lucide-react';
-
-const screenshots = [
-  {
-    id: 1,
-    title: "Dashboard Overview",
-    description: "Monitor all client accounts at a glance",
-    gradient: "from-primary-500 to-secondary-500",
-    stats: [
-      { label: "Active Clients", value: "42", change: "+3" },
-      { label: "Pending Tasks", value: "18", change: "-5" },
-      { label: "This Month", value: "$42.8k", change: "↑12%" }
-    ]
-  },
-  {
-    id: 2,
-    title: "Payroll Processing",
-    description: "Batch process payrolls with one click",
-    gradient: "from-secondary-500 to-accent-500",
-    stats: [
-      { label: "Processing", value: "8", change: "Running" },
-      { label: "Completed", value: "156", change: "This month" },
-      { label: "Accuracy", value: "99.9%", change: "Rate" }
-    ]
-  },
-  {
-    id: 3,
-    title: "Client Management",
-    description: "Organize and communicate with all clients",
-    gradient: "from-accent-500 to-primary-500",
-    stats: [
-      { label: "Total Clients", value: "84", change: "↑8%" },
-      { label: "Active", value: "76", change: "Online" },
-      { label: "Response Time", value: "<2h", change: "Avg" }
-    ]
-  },
-  {
-    id: 4,
-    title: "Reports & Analytics",
-    description: "Generate insights and share reports",
-    gradient: "from-primary-600 to-secondary-600",
-    stats: [
-      { label: "Reports", value: "248", change: "Generated" },
-      { label: "Exports", value: "1.2k", change: "This year" },
-      { label: "Satisfaction", value: "98%", change: "Client rating" }
-    ]
-  }
-];
+import Image from 'next/image';
 
 export default function RightContent() {
   const [currentScreen, setCurrentScreen] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [imageErrors, setImageErrors] = useState<Record<number, boolean>>({});
+  const [showControls, setShowControls] = useState(false);
+
+  /* ---------------- Image Slides ---------------- */
+  const screenshots = [
+    {
+      id: 1,
+      title: "Dashboard",
+      image: "/screenshots/dashboard.png",
+      fallbackColor: "bg-gradient-to-br from-blue-500 to-blue-700"
+    },
+    {
+      id: 2,
+      title: "Employee Management", 
+      image: "/screenshots/employees.png",
+      fallbackColor: "bg-gradient-to-br from-green-500 to-green-700"
+    },
+    {
+      id: 3,
+      title: "Add Employee",
+      image: "/screenshots/add-employee.png",
+      fallbackColor: "bg-gradient-to-br from-purple-500 to-purple-700"
+    }
+  ];
 
   /* ---------------- Parallax Hover ---------------- */
   const containerRef = useRef<HTMLDivElement>(null);
@@ -67,21 +46,21 @@ export default function RightContent() {
     const y = (e.clientY - rect.top) / rect.height - 0.5;
 
     setTilt({
-      x: y * -6,
-      y: x * 8
+      x: y * -5,
+      y: x * 6
     });
   };
 
   const resetTilt = () => setTilt({ x: 0, y: 0 });
 
-  /* ---------------- Carousel ---------------- */
+  /* ---------------- Carousel Functions ---------------- */
   const nextScreen = () => {
     if (isAnimating) return;
     setIsAnimating(true);
     setTimeout(() => {
       setCurrentScreen((p) => (p + 1) % screenshots.length);
       setIsAnimating(false);
-    }, 400);
+    }, 300);
   };
 
   const prevScreen = () => {
@@ -90,7 +69,7 @@ export default function RightContent() {
     setTimeout(() => {
       setCurrentScreen((p) => (p - 1 + screenshots.length) % screenshots.length);
       setIsAnimating(false);
-    }, 400);
+    }, 300);
   };
 
   const goToScreen = (index: number) => {
@@ -99,24 +78,27 @@ export default function RightContent() {
     setTimeout(() => {
       setCurrentScreen(index);
       setIsAnimating(false);
-    }, 400);
+    }, 300);
+  };
+
+  const handleImageError = (id: number) => {
+    setImageErrors(prev => ({ ...prev, [id]: true }));
   };
 
   useEffect(() => {
     if (!isAutoPlaying) return;
     const interval = setInterval(nextScreen, 3500);
     return () => clearInterval(interval);
-  }, [isAutoPlaying]);
-
-  const screen = screenshots[currentScreen];
+  }, [isAutoPlaying, isAnimating]);
 
   return (
-    <div className="relative">
+    <div className="relative w-full">
       <div
         ref={containerRef}
         onMouseMove={handleMouseMove}
-        onMouseLeave={resetTilt}
-        className="relative mx-auto max-w-[95%] sm:max-w-xl md:max-w-2xl lg:max-w-3xl perspective-[1400px]"
+        onMouseLeave={()=>{resetTilt();setShowControls(false)}}
+        className="relative mx-auto w-full max-w-[300px] sm:max-w-[400px] md:max-w-[500px] lg:max-w-[600px] perspective-[1200px]"
+        onMouseEnter={() => setShowControls(true)}
       >
         <div
           className="relative transition-transform duration-300 ease-out"
@@ -124,114 +106,126 @@ export default function RightContent() {
             transform: `rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`
           }}
         >
-          {/* ================= SCREEN LID ================= */}
-          {/* <div className="relative bg-gradient-to-b from-neutral-900 to-neutral-800 rounded-[28px] p-[10px] shadow-[0_50px_140px_rgba(0,0,0,0.6)]"> */}
-<div className="relative bg-gradient-to-b from-neutral-600 to-neutral-500 rounded-[28px] p-[10px] shadow-[0_30px_70px_rgba(0,0,0,0.5)]">
-
+          {/* ================= LAPTOP SCREEN LID ================= */}
+          <div className="relative bg-gradient-to-b from-gray-800 to-gray-900 rounded-[24px] p-3 shadow-2xl">
             {/* Webcam */}
-            <div className="absolute top-[10px] left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-neutral-600 ring-2 ring-neutral-800" />
-
+            <div className="absolute top-3 left-1/2 -translate-x-1/2 w-2.5 h-2.5 rounded-full bg-gray-700 z-20" />
+            
             {/* Screen Bezel */}
-            <div className="rounded-[22px] bg-neutral-950 overflow-hidden">
-
-              {/* ================= SCREEN CONTENT ================= */}
-              <div className="bg-gradient-to-br from-white to-neutral-50 rounded-[18px] overflow-hidden">
-                {/* Top Bar */}
-                <div className="flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 border-b border-neutral-100 bg-gradient-to-r from-primary-50 to-secondary-50">
-                  <div className="flex items-center gap-3">
-                    <div className="w-9 h-9 base-gradient rounded-lg flex items-center justify-center text-white font-bold">
-                      CW
-                    </div>
-                    <div className="hidden sm:block">
-                      <div className="text-sm font-bold text-neutral-900">
-                        Cent<span className="text-transparent bg-clip-text base-gradient">wise</span>
-                      </div>
-                      <div className="text-xs text-neutral-500">
-                        For Accountants, By Accountants
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-3">
-                    <div className="text-right hidden sm:block">
-                      <div className="text-sm font-medium text-neutral-700">{screen.title}</div>
-                      <div className="text-xs text-neutral-500">{screen.description}</div>
-                    </div>
-                    <button
-                      onClick={() => setIsAutoPlaying(!isAutoPlaying)}
-                      className="p-2 rounded-lg bg-white border shadow-sm"
-                    >
-                      {isAutoPlaying ? <Pause size={16} /> : <Play size={16} />}
-                    </button>
-                  </div>
-                </div>
-
-                {/* Carousel */}
-                <div className="relative h-[300px] sm:h-[380px] lg:h-[420px] overflow-hidden">
-                  {screenshots.map((s, i) => (
-                    <div
-                      key={s.id}
-                      className={`absolute inset-0 transition-all duration-500 ${
-                        i === currentScreen
-                          ? 'opacity-100 translate-x-0'
-                          : i < currentScreen
-                          ? '-translate-x-full opacity-0'
-                          : 'translate-x-full opacity-0'
-                      }`}
-                    >
-                      <div className="p-4 sm:p-6 h-full grid grid-cols-3 gap-4">
-                        <div className="space-y-4">
-                          {s.stats.map((stat, idx) => (
-                            <div key={idx} className="bg-white rounded-xl p-3 shadow border">
-                              <div className="text-xs text-neutral-500">{stat.label}</div>
-                              <div className="flex justify-between items-end">
-                                <div className="text-xl font-bold">{stat.value}</div>
-                                <div className="text-xs px-2 py-1 rounded bg-neutral-100">
-                                  {stat.change}
-                                </div>
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-
-                        <div className="col-span-2 bg-white rounded-xl p-4 shadow border">
-                          <div className="text-sm font-medium mb-2">Monthly Performance</div>
-                          <div className="flex items-end gap-2 h-32">
-                            {[65, 80, 60, 90, 75, 85, 70].map((h, idx) => (
-                              <div
-                                key={idx}
-                                className={`w-6 rounded-t bg-gradient-to-t ${s.gradient}`}
-                                style={{ height: `${h}%` }}
-                              />
-                            ))}
+            <div className="rounded-[16px] bg-black overflow-hidden border-2 border-gray-800">
+              {/* Screen Content - 16:9 Aspect Ratio */}
+              <div 
+                className="relative overflow-hidden bg-black"
+                style={{
+                  aspectRatio: '16/9' // 1920x1080 = 16:9
+                }}
+              >
+                {screenshots.map((screen, index) => (
+                  <div
+                    key={screen.id}
+                    className={`absolute inset-0 transition-all duration-300 ${
+                      index === currentScreen
+                        ? 'opacity-100 scale-100'
+                        : 'opacity-0 scale-105'
+                    }`}
+                  >
+                    {/* Image or Fallback */}
+                    <div className="relative w-full h-full">
+                      {!imageErrors[screen.id] ? (
+                        <Image
+                          src={screen.image}
+                          alt={`${screen.title} screenshot`}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 640px) 300px, (max-width: 768px) 400px, (max-width: 1024px) 500px, 600px"
+                          priority={index === 0}
+                          quality={90}
+                          onError={() => handleImageError(screen.id)}
+                        />
+                      ) : (
+                        <div className={`w-full h-full ${screen.fallbackColor} flex items-center justify-center`}>
+                          <div className="text-center text-white p-6">
+                            <h3 className="text-2xl font-bold mb-3">{screen.title}</h3>
+                            <p className="text-white/80">1920×1080 screenshot</p>
                           </div>
                         </div>
-                      </div>
+                      )}
                     </div>
-                  ))}
-                </div>
+                  </div>
+                ))}
 
-                {/* Controls */}
-                <div className="absolute bottom-3 right-3 flex gap-2">
-                  <button onClick={prevScreen} className="p-2 bg-white rounded shadow">
-                    <ChevronLeft size={18} />
+                {/* Overlay Controls (Show on Hover) */}
+                <div className={`absolute inset-0 bg-black/0 transition-all duration-300 ${
+                  showControls ? 'bg-black/10' : ''
+                }`}>
+                  {/* Left Arrow */}
+                  <button
+                    onClick={prevScreen}
+                    className={`absolute left-3 top-1/2 -translate-y-1/2 p-2 bg-black/60 backdrop-blur-sm rounded-full transition-all duration-300 ${
+                      showControls ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'
+                    }`}
+                    disabled={isAnimating}
+                  >
+                    <ChevronLeft size={20} className="text-white" />
                   </button>
-                  <button onClick={nextScreen} className="p-2 bg-white rounded shadow">
-                    <ChevronRight size={18} />
+
+                  {/* Right Arrow */}
+                  <button
+                    onClick={nextScreen}
+                    className={`absolute right-3 top-1/2 -translate-y-1/2 p-2 bg-black/60 backdrop-blur-sm rounded-full transition-all duration-300 ${
+                      showControls ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'
+                    }`}
+                    disabled={isAnimating}
+                  >
+                    <ChevronRight size={20} className="text-white" />
                   </button>
                 </div>
               </div>
+
+              {/* Bottom Indicators */}
+              {/* <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+                {screenshots.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => goToScreen(index)}
+                    className={`w-2 h-2 rounded-full transition-all ${
+                      index === currentScreen
+                        ? 'bg-white w-6'
+                        : 'bg-white/30 hover:bg-white/50'
+                    }`}
+                    disabled={isAnimating}
+                  />
+                ))}
+              </div> */}
             </div>
           </div>
 
           {/* ================= HINGE ================= */}
-          <div className="mx-auto w-[88%] h-[14px] bg-gradient-to-b from-neutral-500 to-neutral-600 rounded-b-xl shadow-inner" />
+          <div className="mx-auto w-[92%] h-2.5 bg-gradient-to-b from-gray-700 to-gray-800 rounded-b-md shadow-inner" />
 
           {/* ================= BASE ================= */}
-          <div className="relative mx-auto w-full h-[26px] bg-gradient-to-b from-neutral-300 to-neutral-400 rounded-b-[32px] shadow-[0_30px_60px_rgba(0,0,0,0.4)]">
-            <div className="absolute top-[6px] left-1/2 -translate-x-1/2 w-[140px] h-[10px] bg-neutral-200 rounded shadow-inner" />
+          <div className="relative mx-auto w-[96%] h-8 bg-gradient-to-b from-gray-300 to-gray-400 rounded-b-2xl shadow-xl">
+            {/* Trackpad indicator */}
+            <div className="absolute top-3 left-1/2 -translate-x-1/2 w-1/2 h-1.5 bg-gradient-to-r from-transparent via-gray-200 to-transparent rounded-full" />
           </div>
         </div>
+
+        {/* External Controls */}
+        {/* <div className="mt-6 flex justify-center items-center gap-4">
+          <button
+            onClick={() => setIsAutoPlaying(!isAutoPlaying)}
+            className="p-3 bg-gray-800 hover:bg-gray-700 rounded-full shadow-lg transition-colors"
+          >
+            {isAutoPlaying ? 
+              <Pause size={20} className="text-white" /> : 
+              <Play size={20} className="text-white" />
+            }
+          </button>
+          
+          <div className="text-sm text-gray-600 font-medium">
+            {currentScreen + 1} / {screenshots.length}
+          </div>
+        </div> */}
       </div>
     </div>
   );

@@ -19,18 +19,18 @@ export default function Home() {
         <HeroSectionV1/>
         {/* <FeaturesSectionCompact/> */}
         <UltimatePartnerSection/>
-        <FirmBenefitsSection imageUrl="/centwise-account-team.png"/>
+        <FirmBenefitsSection imageUrl="/centwise-account-team-d.png"/>
         <PayrollPipeline/>
         {/* <PayrollFlow/> */}
         {/* <AnimatedPayrollFlow/> */}
         {/* <AnimatedSystemFlow/> */}
         {/* <ContinuousWorkflow/> */}
-        <FeaturesSection/>
-                <FirmBenefitsSection imageUrl="/centwise-account-team-b.png"/>
+        {/* <FeaturesSection/> */}
+                {/* <FirmBenefitsSection imageUrl="/centwise-account-team-b.png"/> */}
         <ProductOverview/>
         <HowItWorks/>
-                <FirmBenefitsSection imageUrl="/centwise-account-team-d.png"/>
-        <Integrations/>
+                {/* <FirmBenefitsSection imageUrl="/centwise-account-team-d.png"/> */}
+        {/* <Integrations/> */}
         {/* <CurvedSection/> */}
         <WhyChooseUs/>
       </main>
