@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import AnchorButton from '@/components/ui/AnchorButton';
 import Button from '@/components/ui/AnchorButton';
+import Image from 'next/image';
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -37,27 +38,19 @@ export default function Header() {
     >
       <div className="container-custom">
         <div className="flex items-center justify-between">
-          {/* Logo */}
-<Link href="/" className="flex items-center gap-3 group">
-  {/* Logo Container */}
-  <div className="relative w-10 h-10 base-gradient rounded-lg flex items-center justify-center transform transition-transform group-hover:scale-105">
-    <span className="text-white font-bold text-xl">CW</span>
-    {/* Animated dot */}
-    <span className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-accent-500 rounded-full animate-pulse shadow-sm"></span>
+          
+<Link href="/" className="flex flex-col items-start">
+  {/* Logo */}
+  <div className="relative w-[350px] sm:w-[320px] md:w-[300px] h-[72px]">
+    <Image
+      src="/centvise-logo-with-slogan.png"
+      alt="Centvise logo"
+      fill
+      className="object-contain"
+      priority
+    />
   </div>
 
-  {/* Company Name and Slogan Container */}
-  <div className="flex flex-col">
-    {/* Company Name */}
-    <span className="text-2xl font-bold text-neutral-900 leading-tight">
-      Cent<span className="text-transparent bg-clip-text base-gradient">wise</span>
-    </span>
-    
-    {/* Slogan */}
-    <span className="text-xs font-medium text-neutral-600 leading-tight mt-0.5">
-      For Accountants, By Accountants
-    </span>
-  </div>
 </Link>
 
           {/* Desktop Navigation */}
