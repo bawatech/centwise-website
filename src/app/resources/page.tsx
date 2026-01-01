@@ -26,7 +26,9 @@ export default function ResourcesPage() {
             {/* Payroll Guide Card */}
             <Link
               href="/resources/payroll"
-              className="group bg-white rounded-2xl shadow-soft p-6 transition hover:shadow-primary"
+              className="group bg-white rounded-2xl p-6 transition
+             shadow-md shadow-neutral-300
+             hover:shadow-lg hover:shadow-neutral-400"
             >
               <div className="w-12 h-12 rounded-xl bg-primary-100 text-primary-600 flex items-center justify-center mb-4 text-xl">
                 📘

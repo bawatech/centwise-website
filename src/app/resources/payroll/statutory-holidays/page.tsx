@@ -107,7 +107,8 @@ function HolidayLink({
     <a
       href={href}
       target="_blank"
-      className="block rounded-xl bg-white p-4 shadow-soft transition hover:shadow-primary"
+      className="block rounded-xl bg-white p-4 transition shadow-md shadow-neutral-300
+             hover:shadow-lg hover:shadow-neutral-400"
     >
       <div className="text-neutral-900 font-medium">
         {title}

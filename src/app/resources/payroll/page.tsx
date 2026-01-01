@@ -131,7 +131,8 @@ function PayrollCard({
   return (
     <Link
       href={href}
-      className="group block rounded-2xl bg-white p-6 shadow-soft transition hover:shadow-primary"
+      className="group block rounded-2xl bg-white p-6 transition shadow-md shadow-neutral-300
+             hover:shadow-lg hover:shadow-neutral-400"
     >
       <h3 className="text-lg font-semibold text-neutral-900">
         {title}
