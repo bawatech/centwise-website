@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function CPPPage() {
   return (
-    <main className="max-w-7xl mx-auto px-6 py-14">
+    <main className="py-4">
       
       {/* HEADER */}
       <header className="mb-10">

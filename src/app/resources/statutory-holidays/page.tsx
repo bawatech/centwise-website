@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function StatutoryHolidaysPage() {
   return (
-    <main className="max-w-7xl mx-auto px-6 py-14 mt-[50px]">
+    <main className="py-14 mt-[50px]">
       
       {/* PAGE HEADER */}
       <header className="mb-10">

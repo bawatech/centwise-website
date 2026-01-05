@@ -7,7 +7,7 @@ export default function ResourcesPage() {
     <main>
       {/* HERO */}
       <section className="bg-gradient-hero py-20 mt-[50px]">
-        <div className="max-w-7xl mx-auto px-6 text-center">
+        <div className="text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-neutral-900">
             Resources
           </h1>
