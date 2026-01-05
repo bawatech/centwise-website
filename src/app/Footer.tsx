@@ -76,16 +76,11 @@ export default function Footer() {
           <div>
             <h3 className="text-white font-semibold mb-4">Contact</h3>
             <ul className="space-y-3 text-neutral-400">
-              <ContactItem icon={LocationIcon} text="Toronto, Ontario, Canada" />
+              <ContactItem icon={LocationIcon} text="2010 WINSTON PARK DRIVE,OAKVILLE -ON, L6H 57" />
               <ContactItem
                 icon={EmailIcon}
-                text="info@centvise.ca"
-                href="mailto:info@centvise.ca"
-              />
-              <ContactItem
-                icon={PhoneIcon}
-                text="1-800-PAYROLL"
-                href="tel:1-800-729-7655"
+                text="support@centvise.com"
+                href="mailto:support@centvise.com"
               />
             </ul>
           </div>
