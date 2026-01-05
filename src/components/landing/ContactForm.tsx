@@ -11,7 +11,7 @@ import {
 
 
 const ContactForm = () => {
-  const [form, setForm] = useState({ name: "", email: "", message: "",phone:"" });
+  const [form, setForm] = useState({ name: "", email: "", message: "",phone:"",company_name:"" });
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -33,7 +33,7 @@ const ContactForm = () => {
 
       if (res.ok) {
         setSuccess("Your message has been sent successfully!");
-        setForm({ name: "", email: "", message: "",phone:"" });
+        setForm({ name: "", email: "", message: "",phone:"",company_name:"" });
       } else {
         setError("Failed to submit. Please try again later.");
       }
@@ -107,12 +107,30 @@ const ContactForm = () => {
           <input
             type="text"
             name="name"
-            placeholder="Name *"
+            placeholder="Full Name *"
             value={form.name}
             onChange={handleChange}
             required
             className="w-full rounded-2xl px-5 py-4 bg-white shadow-sm text-gray-800 text-lg placeholder-gray-500 focus:outline-none"
           />
+          <input
+            type="email"
+            name="email"
+            placeholder="Email Address"
+            value={form.email}
+            onChange={handleChange}
+            className="w-full rounded-2xl px-5 py-4 bg-white shadow-sm text-gray-800 text-lg placeholder-gray-500 focus:outline-none"
+          />
+
+<input
+            type="text"
+            name="company_name"
+            placeholder="Company Name"
+            value={form.company_name}
+            onChange={handleChange}
+            className="w-full rounded-2xl px-5 py-4 bg-white shadow-sm text-gray-800 text-lg placeholder-gray-500 focus:outline-none"
+          />
+          
           <input
             type="text"
             name="phone"
@@ -124,14 +142,7 @@ const ContactForm = () => {
             required
             className="w-full rounded-2xl px-5 py-4 bg-white shadow-sm text-gray-800 text-lg placeholder-gray-500 focus:outline-none"
           />
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={form.email}
-            onChange={handleChange}
-            className="w-full rounded-2xl px-5 py-4 bg-white shadow-sm text-gray-800 text-lg placeholder-gray-500 focus:outline-none"
-          />
+
           <textarea
             name="message"
             placeholder="Write your message here *"

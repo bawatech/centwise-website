@@ -1,5 +1,7 @@
 'use client';
 
+import Button from "../ui/AnchorButton";
+
 export default function ContactInfo() {
   const contactDetails = [
     {
@@ -116,14 +118,9 @@ export default function ContactInfo() {
             <p className="text-sm text-neutral-700 mb-3">
               Access our payroll app directly or schedule a live demo with our team.
             </p>
-            <a
-              href="https://app.centvise.ca"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block bg-primary-600 text-white px-5 py-2 rounded-lg hover:bg-primary-700 transition-all font-semibold text-sm"
-            >
+            <Button>
               Access App →
-            </a>
+              </Button>
           </div>
         </div>
       </div>
