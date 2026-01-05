@@ -2,7 +2,7 @@
 
 export default function DemoCTA() {
   return (
-    <section className="w-full bg-primary py-24 px-4">
+    <section className="w-full bg-primary-800 py-24 px-4">
       <div className="mx-auto max-w-5xl text-center">
         {/* Heading */}
         <h2 className="text-4xl md:text-5xl font-bold text-white">
@@ -11,8 +11,7 @@ export default function DemoCTA() {
 
         {/* Sub text */}
         <p className="mt-6 text-lg md:text-xl text-white/80 max-w-3xl mx-auto">
-          Explore how our solution simplifies payroll, compliance, and employee
-          management—designed to scale with your business as it grows.
+          Explore how our solution simplifies payroll process so that you can focus on your accounting practice not on processing payroll.
         </p>
 
         {/* Buttons */}

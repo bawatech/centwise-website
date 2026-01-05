@@ -88,7 +88,7 @@ Our all-in-one, do-it-all portal puts accountants and bookkeepers across Canada 
 
 
         {/* Stats Row */}
-        <div className="mt-16 pt-12 border-t border-neutral-100">
+        {/* <div className="mt-16 pt-12 border-t border-neutral-100">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto">
             {[
               { value: "2,000+", label: "Accounting Firms" },
@@ -109,7 +109,7 @@ Our all-in-one, do-it-all portal puts accountants and bookkeepers across Canada 
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
 
         {/* CTA Section */}
         <div className="mt-20 text-center">
@@ -119,7 +119,7 @@ Our all-in-one, do-it-all portal puts accountants and bookkeepers across Canada 
                 Ready to transform your practice?
               </h3>
               <p className="text-neutral-600">
-                Join thousands of accounting professionals across Canada
+                Simplify payroll compliance for your Canadian clients.
               </p>
             </div>
             <Button className='px-8 py-3'>

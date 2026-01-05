@@ -2,8 +2,8 @@ import ContactForm from '../../components/contact/ContactForm';
 import ContactInfo from '../../components/contact/ContactInfo';
 
 export const metadata = {
-  title: 'Contact Us | PayrollPro Canada',
-  description: 'Get in touch with PayrollPro. Our team is ready to help with your payroll management needs.',
+  title: 'Contact Us | Centvise Canada',
+  description: 'Get in touch with Centvise. Our team is ready to help with your payroll management needs.',
 };
 
 export default function ContactPage() {
@@ -31,7 +31,7 @@ export default function ContactPage() {
             </h1>
             
             <p className="text-xl text-neutral-600 leading-relaxed animate-fade-in" style={{ animationDelay: '0.2s' }}>
-              Have questions about PayrollPro? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
+              Have questions about Centvise? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
             </p>
           </div>
         </div>
@@ -83,7 +83,7 @@ export default function ContactPage() {
                 Frequently Asked Questions
               </h2>
               <p className="text-lg text-neutral-600">
-                Quick answers to common questions about PayrollPro
+                Quick answers to common questions about Centvise
               </p>
             </div>
 
@@ -103,7 +103,7 @@ export default function ContactPage() {
                 },
                 {
                   question: 'Do you support multiple provinces?',
-                  answer: 'Yes, PayrollPro supports all Canadian provinces and territories with automatic tax rate updates.',
+                  answer: 'Yes, Centvise supports all Canadian provinces and territories with automatic tax rate updates.',
                 },
               ].map((faq, index) => (
                 <div

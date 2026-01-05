@@ -52,7 +52,7 @@ export default function Integrations() {
             Seamless Accounting Integrations
           </h2>
           <p className="text-xl text-neutral-600 max-w-3xl mx-auto">
-            PayrollPro works with the tools your firm already trusts.
+            Centvise works with the tools your firm already trusts.
           </p>
         </div>
 

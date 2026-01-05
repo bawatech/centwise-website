@@ -121,7 +121,7 @@ export default function HeroSectionV2() {
             {/* CTA Buttons */}
             <div className={`flex flex-col sm:flex-row gap-4 transition-all duration-500 delay-200 ${isAnimating ? 'opacity-0 translate-y-4' : 'opacity-100 translate-y-0'}`}>
               <a
-                href="https://app.payrollpro.ca"
+                href="https://app.Centvise.ca"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group bg-primary-600 text-white px-8 py-4 rounded-xl hover:bg-primary-700 transition-all font-bold text-lg shadow-primary hover:shadow-xl transform hover:-translate-y-1 text-center relative overflow-hidden"

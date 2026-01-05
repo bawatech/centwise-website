@@ -95,13 +95,13 @@ export default function LeftContent() {
       {/* CTA Buttons */}
       <div className="flex flex-col sm:flex-row gap-4">
         <button className="group inline-flex items-center justify-center gap-3 px-8 py-4 text-white font-semibold rounded-xl base-gradient hover:shadow-lg hover:shadow-primary/30 transition-all duration-300 hover:-translate-y-0.5">
-          Start Free 14-Day Trial
+          Start 3 Months Trial
           <div className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center">
             <div className="w-2 h-2 rounded-full bg-white group-hover:animate-ping" />
           </div>
         </button>
         <button className="inline-flex items-center justify-center px-8 py-4 font-semibold rounded-xl border-2 border-primary-200 text-primary-700 hover:bg-primary-50 transition-colors">
-          Schedule a Demo
+          Watch Video
         </button>
       </div>
     </div>

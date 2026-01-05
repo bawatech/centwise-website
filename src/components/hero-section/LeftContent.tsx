@@ -52,13 +52,13 @@ export default function LeftContent() {
       <div className="flex flex-col sm:flex-row gap-4">
         <button className="group relative overflow-hidden inline-flex items-center justify-center gap-3 px-8 py-4 text-white font-semibold rounded-xl base-gradient shadow-lg hover:shadow-xl transition-all duration-300">
           <div className="absolute inset-0 bg-gradient-to-r from-primary-600 to-secondary-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-          <span className="relative">Start Free 14-Day Trial</span>
+          <span className="relative">Start 3 Months Trial</span>
           <ArrowRight className="w-5 h-5 relative group-hover:translate-x-1 transition-transform" />
         </button>
         
         <button className="group inline-flex items-center justify-center px-8 py-4 font-semibold rounded-xl border-2 border-primary-200 text-primary-700 hover:bg-primary-50/50 hover:border-primary-300 transition-all duration-300">
           <span className="flex items-center gap-2">
-            <span>Schedule a Demo</span>
+            <span>Watch Video</span>
             <div className="w-8 h-8 rounded-full bg-primary-100 group-hover:bg-primary-200 flex items-center justify-center transition-colors">
               <div className="w-2 h-2 rounded-full bg-primary-500 group-hover:bg-primary-600" />
             </div>

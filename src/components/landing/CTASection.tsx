@@ -32,13 +32,13 @@ export default function CTASection() {
               rel="noopener noreferrer"
               className="bg-accent-400 text-neutral-900 px-10 py-5 rounded-lg hover:bg-accent-300 transition-all font-bold text-lg shadow-accent hover:shadow-2xl transform hover:-translate-y-1"
             >
-              Start Free Trial →
+              Start 3 Months Free Trial →
             </a>
             <Link
               href="/contact"
               className="bg-white/10 backdrop-blur text-white px-10 py-5 rounded-lg hover:bg-white/20 transition-all font-bold text-lg border-2 border-white/30"
             >
-              Schedule a Demo
+              Watch Video
             </Link>
           </div>
 

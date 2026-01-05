@@ -3,9 +3,9 @@
 export default function WhyChooseUs() {
   const reasons = [
     {
-      title: 'Custom Software Expertise',
-      description: '15+ years building enterprise solutions for accounting firms. We understand your workflow because we\'ve worked alongside accountants.',
-      stat: '15+ Years',
+      title: 'Accountant Expertise ',
+      description: `We are specially developing products for accounting firms.  we understand your workflow because we've worked alongside accountants. `,
+      stat: 'Expertise',
     },
     {
       title: 'Canadian Compliance Focus',
@@ -14,7 +14,7 @@ export default function WhyChooseUs() {
     },
     {
       title: 'Scalable Architecture',
-      description: 'From solo practitioners to national firms with 10,000+ employees. Our infrastructure scales with your business growth.',
+      description: `Build exclusively for accounting firms, considering the needs of accountants  not the business owner's.`,
       stat: 'Enterprise Ready',
     },
     {
@@ -30,7 +30,7 @@ export default function WhyChooseUs() {
         {/* Section Header */}
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl lg:text-5xl font-bold text-neutral-900 mb-4">
-            Why Canadian Accountants Choose PayrollPro
+            Why Canadian Accountants Choose Centvise
           </h2>
           <p className="text-xl text-neutral-600 max-w-3xl mx-auto">
             We're not just another payroll vendor. We're your technology partner in building efficient, compliant practices.

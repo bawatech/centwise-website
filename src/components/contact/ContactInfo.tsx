@@ -44,7 +44,7 @@ export default function ContactInfo() {
       <div className="animate-fade-in">
         <h3 className="text-2xl font-bold text-neutral-900 mb-2">Get in Touch</h3>
         <p className="text-neutral-600 leading-relaxed">
-          Have questions about PayrollPro? Our team is here to help. Reach out and we'll get back to you within 24 hours.
+          Have questions about Centvise? Our team is here to help. Reach out and we'll get back to you within 24 hours.
         </p>
       </div>
 

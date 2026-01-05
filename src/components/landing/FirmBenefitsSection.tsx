@@ -106,7 +106,7 @@ export default function FirmBenefitsSection({imageUrl}:{imageUrl:string}) {
             {/* Optional note */}
             <div className="mt-10 pt-6 border-t border-neutral-200">
               <p className="text-sm text-neutral-500">
-                *Automated Payroll includes automatic calculations, filings, and compliance updates
+                *Automated payroll allows the system to process employee payroll without manual intervention once specific, pre-defined conditions are met
               </p>
             </div>
           </div>

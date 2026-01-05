@@ -84,7 +84,7 @@ const ContactForm = () => {
           </div>
 
           {/* WhatsApp & Call Buttons */}
-          <div className="flex flex-row gap-4">
+          {/* <div className="flex flex-row gap-4">
             <a
               href={contact?.links?.whatsapp}
               target="_blank"
@@ -99,7 +99,7 @@ const ContactForm = () => {
             >
               <FaPhoneAlt />Call Now
             </a>
-          </div>
+          </div> */}
         </div>
 
         {/* Right Column - Form */}

@@ -80,14 +80,14 @@ export default function HeroSection() {
                 href="/signup"
                 className="group inline-flex items-center justify-center gap-2 px-8 py-3.5 text-white font-semibold rounded-xl base-gradient hover:shadow-primary transition-all duration-300 transform hover:-translate-y-0.5"
               >
-                Start Free Trial
+                Start 3 Months Free Trial
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
                 href="/demo"
                 className="inline-flex items-center justify-center px-8 py-3.5 font-semibold rounded-xl border-2 border-primary-200 text-primary-700 hover:bg-primary-50 transition-colors"
               >
-                Book a Demo
+                Watch Video
               </Link>
             </div>
 

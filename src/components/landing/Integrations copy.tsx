@@ -37,7 +37,7 @@ export default function Integrations() {
             Seamless Accounting Integrations
           </h2>
           <p className="text-xl text-neutral-600 max-w-3xl mx-auto">
-            PayrollPro fits directly into your existing accounting workflow—no process changes required.
+            Centvise fits directly into your existing accounting workflow—no process changes required.
           </p>
         </div>
 

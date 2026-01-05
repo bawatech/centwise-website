@@ -35,7 +35,7 @@ export default function AnimatedPayrollFlow() {
             Payroll, Fully Automated
           </h2>
           <p className="text-xl text-neutral-300 max-w-3xl mx-auto">
-            Watch how PayrollPro transforms complex payroll into a seamless flow.
+            Watch how Centvise transforms complex payroll into a seamless flow.
           </p>
         </div>
 
@@ -95,7 +95,7 @@ export default function AnimatedPayrollFlow() {
             whileTap={{ scale: 0.97 }}
             className="inline-flex items-center justify-center rounded-lg bg-primary-600 px-10 py-4 text-white font-semibold shadow-lg hover:bg-primary-700 transition"
           >
-            See PayrollPro in Action →
+            See Centvise in Action →
           </motion.button>
         </div>
       </div>

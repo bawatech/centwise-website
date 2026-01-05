@@ -113,7 +113,7 @@ export default function RightContent() {
                   <span className="text-white font-bold text-sm">PP</span>
                 </div>
                 <div>
-                  <div className="text-lg font-bold text-neutral-900">PayrollPro</div>
+                  <div className="text-lg font-bold text-neutral-900">Centvise</div>
                   <div className="text-xs text-neutral-500">CRM for Accountants</div>
                 </div>
               </div>

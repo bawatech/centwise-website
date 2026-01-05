@@ -1,5 +1,7 @@
 'use client';
 
+import Button from "../ui/AnchorButton";
+
 export default function HowItWorks() {
   const steps = [
     {
@@ -11,13 +13,13 @@ export default function HowItWorks() {
     {
       title: 'Run Payroll',
       description:
-        'Process payroll in minutes with automated CPP, EI, and income tax calculations—no manual adjustments.',
+        'Process payroll in minutes with automated CPP, EI, and income tax calculations.',
       stat: 'Step 02',
     },
     {
-      title: 'CRA Remittance & Filings',
+      title: 'CRA Reports & Filings',
       description:
-        'Submit CRA remittances, generate T4s and ROEs, and stay compliant without spreadsheets or rework.',
+        `Submit T4's to CRA  and generate CRA remittance reports , ROE’s  online and stay compliant without spreadsheets or rework`,
       stat: 'Step 03',
     },
     {
@@ -74,9 +76,9 @@ export default function HowItWorks() {
 
         {/* CTA */}
         <div className="text-center mt-16 animate-fade-in">
-          <button className="inline-flex items-center justify-center rounded-lg bg-primary-600 px-8 py-4 text-white font-semibold shadow-md hover:bg-primary-700 transition">
+          <Button>
             Schedule a Demo →
-          </button>
+          </Button>
         </div>
       </div>
     </section>

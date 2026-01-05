@@ -4,7 +4,7 @@ import Header from './Header';
 import Footer from './Footer';
 
 export const metadata: Metadata = {
-  title: 'PayrollPro Canada | Professional Payroll Management for Accountants',
+  title: 'Centvise Canada | Professional Payroll Management for Accountants',
   description: 'CRA-compliant payroll management and CRM solutions designed specifically for Canadian accounting professionals.',
   keywords: 'payroll, accounting, CRA, Canada, payroll management, accounting software',
 };

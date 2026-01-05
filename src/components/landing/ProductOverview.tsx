@@ -7,12 +7,12 @@ export default function ProductOverview() {
       description: 'Manage unlimited client organizations with isolated data and custom workflows for each.',
     },
     {
-      title: 'Provincial Compliance',
-      description: 'Automatically adapts to provincial tax rates, holidays, and labour standards across all territories.',
+      title: 'Payroll Calculation',
+      description: 'Automatically calculate CPP, EI , Federal Tax, Provincial tax , with the option to modify calculations , in case of any changes is required.',
     },
     {
-      title: 'Accounting Software Integration',
-      description: 'Native integrations with QuickBooks, Xero, and Sage for seamless financial reconciliation.',
+      title: 'Streamline year end process',
+      description: 'Generate T4 and other year end reports , also submit online T4’s to CRA',
     },
   ];
 
@@ -31,7 +31,7 @@ export default function ProductOverview() {
             </h2>
 
             <p className="text-lg text-neutral-700 leading-relaxed">
-              PayrollPro is not generic payroll software. It's a specialized platform engineered specifically 
+              Centvise is not generic payroll software. It's a specialized platform engineered specifically 
               for Canadian accounting firms managing payroll for multiple clients.
             </p>
 
