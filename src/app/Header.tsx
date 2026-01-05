@@ -2,9 +2,9 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import AnchorButton from '@/components/ui/AnchorButton';
 import Button from '@/components/ui/AnchorButton';
 import Image from 'next/image';
+import clsx from 'clsx';
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -22,39 +22,49 @@ export default function Header() {
   const navigation = [
     { name: 'Home', href: '/' },
     { name: 'Resources', href: '/resources' },
-    // { name: 'Version 2', href: '/version-2' },
-    // { name: 'Version 3', href: '/version-3' },
-    // { name: 'Version 4', href: '/version-4' },
-    // { name: 'About', href: '#about' },
     { name: 'Contact', href: '/contact' },
   ];
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={clsx(
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         isScrolled
-          ? 'bg-white shadow-md py-3'
-          : 'bg-white/95 backdrop-blur-sm py-4'
-      }`}
+          ? "bg-white shadow-md py-2"
+          : "bg-white/95 backdrop-blur-sm py-3"
+      )}
     >
       <div className="container-custom">
         <div className="flex items-center justify-between">
-          
-<Link href="/">
-  {/* Logo */}
-  <div className="relative w-[350px] sm:w-[320px] md:w-[300px] h-[72px]">
-    <Image
-      src="/centvise-logo-rect.png"
-      alt="Centvise logo"
-      fill
-      className="object-contain"
-      priority
-    />
-  </div>
 
-</Link>
+          {/* LOGO */}
+          <Link href="/" className="flex items-center">
+            <div
+              className={clsx(
+                "relative transition-all duration-300",
+                // Mobile
+                isScrolled
+                  ? "w-[130px] h-[34px]"
+                  : "w-[160px] h-[40px]",
+                // Tablet
+                "sm:" + (isScrolled ? "w-[170px] h-[42px]" : "w-[200px] h-[48px]"),
+                // Desktop
+                "md:" + (isScrolled ? "w-[220px] h-[48px]" : "w-[260px] h-[56px]"),
+                // Large desktop
+                "lg:" + (isScrolled ? "w-[260px] h-[56px]" : "w-[300px] h-[64px]")
+              )}
+            >
+              <Image
+                src="/centvise-logo-rect.png"
+                alt="Centvise logo"
+                fill
+                className="object-contain"
+                priority
+              />
+            </div>
+          </Link>
 
-          {/* Desktop Navigation */}
+          {/* DESKTOP NAV */}
           <nav className="hidden md:flex items-center space-x-8">
             {navigation.map((item) => (
               <Link
@@ -63,17 +73,16 @@ export default function Header() {
                 className="text-neutral-700 hover:text-primary-600 transition-colors font-medium text-sm relative group"
               >
                 {item.name}
-                <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-primary-600 transition-all group-hover:w-full"></span>
+                <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-primary-600 transition-all group-hover:w-full"></span>
               </Link>
             ))}
-            
-            <Button >
+
+            <Button>
               Access App →
             </Button>
-
           </nav>
 
-          {/* Mobile Menu Button */}
+          {/* MOBILE MENU BUTTON */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="md:hidden p-2 text-neutral-700 hover:text-primary-600 transition-colors"
@@ -91,10 +100,10 @@ export default function Header() {
           </button>
         </div>
 
-        {/* Mobile Menu */}
+        {/* MOBILE MENU */}
         {isMobileMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 animate-fade-in">
-            <nav className="flex flex-col space-y-3">
+          <div className="md:hidden mt-3 pb-4 animate-fade-in">
+            <nav className="flex flex-col space-y-2">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
@@ -105,9 +114,11 @@ export default function Header() {
                   {item.name}
                 </Link>
               ))}
-              <Button >
-              Access App →
-            </Button>
+              <div className="px-4 pt-2">
+                <Button className="w-full">
+                  Access App →
+                </Button>
+              </div>
             </nav>
           </div>
         )}
