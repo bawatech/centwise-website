@@ -54,8 +54,8 @@ export default function FirmBenefitsSection({imageUrl}:{imageUrl:string}) {
             {/* Image container with proper dimensions */}
             <div className="relative w-full h-full aspect-square max-w-3xl mx-auto bg-gradient-to-br from-neutral-50 to-white rounded-3xl border border-neutral-100 shadow-xl overflow-hidden">
               <Image 
-                src={imageUrl || "/centwise-account-team.png"} 
-                alt="Accounting team collaborating on Centwise platform" 
+                src={imageUrl || "/centvise-account-team.png"} 
+                alt="Accounting team collaborating on Centvise platform" 
                 fill
                 className="object-contain p-8"
                 sizes="(max-width: 768px) 100vw, 50vw"

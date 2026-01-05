@@ -28,7 +28,7 @@ export default function PayrollPipeline() {
     <br/>
     <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl lg:text-5xl font-bold text-neutral-900 mb-4">
-            How CentWise Works
+            How Centvise Works
           </h2>
           <p className="text-xl text-neutral-600 max-w-3xl mx-auto">
             A simple, structured workflow designed specifically for Canadian accounting firms.

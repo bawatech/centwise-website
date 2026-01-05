@@ -18,28 +18,28 @@ export default function RightContent() {
       title: "Dashboard",
       image: "/screenshots/dashboard.png", // Update with your actual path
       fallbackColor: "bg-gradient-to-br from-blue-500 to-blue-700",
-      alt: "Centwise Dashboard showing business overview and metrics"
+      alt: "Centvise Dashboard showing business overview and metrics"
     },
     {
       id: 2,
       title: "Employee Management", 
       image: "/screenshots/employees.png", // Update with your actual path
       fallbackColor: "bg-gradient-to-br from-green-500 to-green-700",
-      alt: "Centwise Employee Management interface"
+      alt: "Centvise Employee Management interface"
     },
     {
       id: 3,
       title: "Add Employee Option",
       image: "/screenshots/add-employee.png", // Update with your actual path
       fallbackColor: "bg-gradient-to-br from-purple-500 to-purple-700",
-      alt: "Centwise Add Employee form"
+      alt: "Centvise Add Employee form"
     },
     {
       id: 3,
       title: "Add Employee Form",
       image: "/screenshots/add-employee-form.png", // Update with your actual path
       fallbackColor: "bg-gradient-to-br from-purple-500 to-purple-700",
-      alt: "Centwise Add Employee form"
+      alt: "Centvise Add Employee form"
     }
   ];
 
@@ -129,7 +129,7 @@ export default function RightContent() {
                     <div className="w-6 h-6 rounded bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center">
                       <span className="text-white text-xs font-bold">CW</span>
                     </div>
-                    <span className="text-white text-xs font-medium">Centwise</span>
+                    <span className="text-white text-xs font-medium">Centvise</span>
                   </div>
                   <button
                     onClick={() => setIsAutoPlaying(!isAutoPlaying)}

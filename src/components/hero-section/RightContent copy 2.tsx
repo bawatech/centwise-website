@@ -120,7 +120,7 @@ export default function RightContent() {
                     <div className="w-6 h-6 rounded bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center">
                       <span className="text-white text-xs font-bold">CW</span>
                     </div>
-                    <span className="text-white text-xs font-medium">Centwise</span>
+                    <span className="text-white text-xs font-medium">Centvise</span>
                   </div>
                   <button
                     onClick={() => setIsAutoPlaying(!isAutoPlaying)}

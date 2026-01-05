@@ -60,7 +60,7 @@ export default function ScreenContent({
               </div>
               <div className="hidden sm:block">
                 <div className="text-xs font-bold text-white">
-                  Cent<span className="text-transparent bg-clip-text base-gradient">wise</span>
+                  Cent<span className="text-transparent bg-clip-text base-gradient">vise</span>
                 </div>
                 <div className="text-[10px] text-neutral-400">
                   For Accountants, By Accountants

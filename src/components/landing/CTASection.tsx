@@ -27,7 +27,7 @@ export default function CTASection() {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 animate-fade-in" style={{ animationDelay: '0.2s' }}>
             <a
-              href="https://app.centwise.ca"
+              href="https://app.centvise.ca"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-accent-400 text-neutral-900 px-10 py-5 rounded-lg hover:bg-accent-300 transition-all font-bold text-lg shadow-accent hover:shadow-2xl transform hover:-translate-y-1"

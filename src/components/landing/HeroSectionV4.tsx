@@ -65,7 +65,7 @@ export default function HeroSectionV4() {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
               <a
-                href="https://app.centwise.ca"
+                href="https://app.centvise.ca"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-primary-600 text-white px-8 py-4 rounded-lg hover:bg-primary-700 transition-all font-semibold text-lg shadow-primary hover:shadow-xl transform hover:-translate-y-1 text-center"

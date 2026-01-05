@@ -7,120 +7,96 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-neutral-900 text-neutral-300 pt-16 pb-8">
+    <footer className="relative bg-neutral-900 text-neutral-300 pt-20 pb-8">
+      
+      {/* Top Accent Line */}
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary-600/40 to-transparent" />
+
       <div className="container-custom">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-          {/* Company Info */}
-          <div className="col-span-1 md:col-span-2">
-            <div className="flex items-center space-x-3 mb-4">
-              <Link href="/">
-  {/* Logo */}
-  <div className="relative w-[350px] sm:w-[320px] md:w-[300px] h-[72px] bg-white rounded-lg">
-    <Image
-      src="/centvise-logo-rect.png"
-      alt="Centvise logo"
-      fill
-      className="object-contain"
-      priority
-    />
-  </div>
+        
+        {/* Main Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
 
-</Link>
-            </div>
-            <p className="text-neutral-400 leading-relaxed max-w-md mb-6">
-              Canadian-built payroll and CRM solutions designed specifically for accounting professionals. 
-              Compliant, secure, and tailored to your workflow.
+          {/* Brand */}
+          <div className="md:col-span-2">
+            <Link href="/" className="inline-block mb-4">
+              <div className="
+                relative 
+                w-[160px] h-[40px]
+                sm:w-[200px] sm:h-[48px]
+                md:w-[240px] md:h-[56px]
+                bg-white rounded-lg p-2
+              ">
+                <Image
+                  src="/centvise-logo-rect.png"
+                  alt="Centvise logo"
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              </div>
+            </Link>
+
+            <p className="text-neutral-400 leading-relaxed max-w-md mt-4">
+              Canadian-built payroll and CRM software designed specifically for
+              accounting professionals. Compliance-first, secure, and tailored
+              to firm workflows.
             </p>
-            <div className="flex items-center gap-4">
-              <a
-                href="#"
-                className="w-10 h-10 bg-neutral-800 hover:bg-primary-600 rounded-lg flex items-center justify-center transition-colors"
-                aria-label="LinkedIn"
-              >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                </svg>
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 bg-neutral-800 hover:bg-primary-600 rounded-lg flex items-center justify-center transition-colors"
-                aria-label="Twitter"
-              >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/>
-                </svg>
-              </a>
+
+            {/* Socials */}
+            <div className="flex items-center gap-3 mt-6">
+              {[
+                { label: 'LinkedIn', icon: LinkedInIcon },
+                { label: 'Twitter', icon: TwitterIcon },
+              ].map(({ label, icon: Icon }) => (
+                <a
+                  key={label}
+                  href="#"
+                  aria-label={label}
+                  className="group flex h-10 w-10 items-center justify-center rounded-full bg-neutral-800 transition hover:bg-primary-600"
+                >
+                  <Icon className="h-4 w-4 text-neutral-300 group-hover:text-white" />
+                </a>
+              ))}
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h3 className="text-white font-semibold mb-4">Quick Links</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link href="/" className="hover:text-primary-400 transition-colors">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link href="/resources" className="hover:text-primary-400 transition-colors">
-                  Resources
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="hover:text-primary-400 transition-colors">
-                  Contact
-                </Link>
-              </li>
-              <li>
-                <a 
-                  href="https://app.centwise.ca" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="hover:text-primary-400 transition-colors"
-                >
-                  Access App
-                </a>
-              </li>
-            </ul>
-          </div>
+          {/* Links */}
+          <FooterColumn
+            title="Quick Links"
+            links={[
+              { label: 'Home', href: '/' },
+              { label: 'Resources', href: '/resources' },
+              { label: 'Contact', href: '/contact' },
+              { label: 'Access App', href: 'https://app.centvise.ca', external: true },
+            ]}
+          />
 
-          {/* Contact Info */}
+          {/* Contact */}
           <div>
             <h3 className="text-white font-semibold mb-4">Contact</h3>
-            <ul className="space-y-2 text-neutral-400">
-              <li className="flex items-start gap-2">
-                <svg className="w-5 h-5 text-primary-400 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
-                <span>Toronto, Ontario, Canada</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <svg className="w-5 h-5 text-primary-400 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-                <a href="mailto:info@centwise.ca" className="hover:text-primary-400 transition-colors">
-                  info@centwise.ca
-                </a>
-              </li>
-              <li className="flex items-start gap-2">
-                <svg className="w-5 h-5 text-primary-400 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                </svg>
-                <a href="tel:1-800-729-7655" className="hover:text-primary-400 transition-colors">
-                  1-800-PAYROLL
-                </a>
-              </li>
+            <ul className="space-y-3 text-neutral-400">
+              <ContactItem icon={LocationIcon} text="Toronto, Ontario, Canada" />
+              <ContactItem
+                icon={EmailIcon}
+                text="info@centvise.ca"
+                href="mailto:info@centvise.ca"
+              />
+              <ContactItem
+                icon={PhoneIcon}
+                text="1-800-PAYROLL"
+                href="tel:1-800-729-7655"
+              />
             </ul>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-neutral-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-neutral-500 text-sm text-center md:text-left">
-            &copy; {currentYear} CentWise Canada. All rights reserved. Built for Canadian accounting professionals.
+        <div className="border-t border-neutral-800 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <p className="text-neutral-500 text-sm text-center sm:text-left">
+            © {currentYear} Centvise. All rights reserved.
           </p>
+
           <div className="flex gap-6 text-sm">
             <Link href="/privacy" className="text-neutral-500 hover:text-primary-400 transition-colors">
               Privacy Policy
@@ -132,5 +108,104 @@ export default function Footer() {
         </div>
       </div>
     </footer>
+  );
+}
+
+/* ---------------- Components ---------------- */
+
+function FooterColumn({
+  title,
+  links,
+}: {
+  title: string;
+  links: { label: string; href: string; external?: boolean }[];
+}) {
+  return (
+    <div>
+      <h3 className="text-white font-semibold mb-4">{title}</h3>
+      <ul className="space-y-2">
+        {links.map((link) => (
+          <li key={link.label}>
+            <Link
+              href={link.href}
+              target={link.external ? '_blank' : undefined}
+              rel={link.external ? 'noopener noreferrer' : undefined}
+              className="text-neutral-400 hover:text-primary-400 transition-colors"
+            >
+              {link.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+function ContactItem({
+  icon: Icon,
+  text,
+  href,
+}: {
+  icon: any;
+  text: string;
+  href?: string;
+}) {
+  const content = (
+    <span className="flex items-start gap-3">
+      <Icon className="h-5 w-5 text-primary-400 mt-0.5" />
+      <span>{text}</span>
+    </span>
+  );
+
+  return href ? (
+    <a href={href} className="hover:text-primary-400 transition-colors">
+      {content}
+    </a>
+  ) : (
+    <li>{content}</li>
+  );
+}
+
+/* ---------------- Icons ---------------- */
+
+function LinkedInIcon(props: any) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
+      <path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.27c-.97 0-1.75-.79-1.75-1.76s.78-1.76 1.75-1.76 1.75.79 1.75 1.76-.78 1.76-1.75 1.76zm13.5 12.27h-3v-5.6c0-3.37-4-3.11-4 0v5.6h-3v-11h3v1.77c1.4-2.59 7-2.78 7 2.48v6.75z" />
+    </svg>
+  );
+}
+
+function TwitterIcon(props: any) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
+      <path d="M23 3a10.9 10.9 0 01-3.14 1.53A4.48 4.48 0 0016 3c-2.63 0-4.78 2.14-4.78 4.78 0 .37.04.73.12 1.07C7.69 8.63 4.07 6.69 1.64 3.7a4.79 4.79 0 00-.65 2.4c0 1.66.85 3.13 2.14 3.99a4.45 4.45 0 01-2.17-.6v.06c0 2.32 1.65 4.26 3.83 4.7a4.48 4.48 0 01-2.16.08c.61 1.91 2.38 3.3 4.48 3.34A9 9 0 010 19.54a12.72 12.72 0 006.92 2.03c8.3 0 12.84-6.87 12.84-12.84 0-.2 0-.39-.01-.59A9.2 9.2 0 0023 3z" />
+    </svg>
+  );
+}
+
+function LocationIcon(props: any) {
+  return (
+    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" {...props}>
+      <path strokeWidth={2} d="M12 21s-6-5.33-6-10a6 6 0 1112 0c0 4.67-6 10-6 10z" />
+      <circle cx="12" cy="11" r="2" strokeWidth={2} />
+    </svg>
+  );
+}
+
+function EmailIcon(props: any) {
+  return (
+    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" {...props}>
+      <path strokeWidth={2} d="M4 6h16v12H4z" />
+      <path strokeWidth={2} d="M4 6l8 7 8-7" />
+    </svg>
+  );
+}
+
+function PhoneIcon(props: any) {
+  return (
+    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" {...props}>
+      <path strokeWidth={2} d="M3 5h4l2 5-3 2a12 12 0 006 6l2-3 5 2v4a2 2 0 01-2 2C9 23 1 15 1 7a2 2 0 012-2z" />
+    </svg>
   );
 }

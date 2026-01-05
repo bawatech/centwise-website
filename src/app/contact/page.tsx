@@ -2,7 +2,7 @@ import ContactForm from '../../components/contact/ContactForm';
 import ContactInfo from '../../components/contact/ContactInfo';
 
 export const metadata = {
-  title: 'Contact Us | Centvise Canada',
+  title: 'Contact Us | Centvise',
   description: 'Get in touch with Centvise. Our team is ready to help with your payroll management needs.',
 };
 

@@ -9,8 +9,8 @@ export default function ContactInfo() {
         </svg>
       ),
       title: 'Email',
-      value: 'info@centwise.ca',
-      link: 'mailto:info@centwise.ca',
+      value: 'info@centvise.ca',
+      link: 'mailto:info@centvise.ca',
       description: 'Send us an email anytime',
     },
     {
@@ -117,7 +117,7 @@ export default function ContactInfo() {
               Access our payroll app directly or schedule a live demo with our team.
             </p>
             <a
-              href="https://app.centwise.ca"
+              href="https://app.centvise.ca"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block bg-primary-600 text-white px-5 py-2 rounded-lg hover:bg-primary-700 transition-all font-semibold text-sm"

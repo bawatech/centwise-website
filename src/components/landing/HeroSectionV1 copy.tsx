@@ -50,7 +50,7 @@ export default function HeroSection() {
           {/* CTAs */}
           <div className="mt-10 flex flex-col sm:flex-row gap-6 animate-fade-up delay-300">
             <a
-              href="https://app.centwise.ca"
+              href="https://app.centvise.ca"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center bg-primary-600 text-white px-9 py-4 rounded-lg text-lg font-semibold shadow-primary hover:bg-primary-700 transition-all"

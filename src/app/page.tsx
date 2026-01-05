@@ -14,7 +14,7 @@ export default function Home() {
         <HeroSectionV1/>
         {/* <FeaturesSectionCompact/> */}
         <UltimatePartnerSection/>
-        <FirmBenefitsSection imageUrl="/centwise-account-team-d.png"/>
+        <FirmBenefitsSection imageUrl="/centvise-account-team.png"/>
         <DemoCTA/>
         <ProductOverview/>
         <HowItWorks/>
