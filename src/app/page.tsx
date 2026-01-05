@@ -1,3 +1,5 @@
+import DemoCTA from "@/components/landing/components/DemoCTA";
+import ContactForm from "@/components/landing/ContactForm";
 import ContinuousWorkflow from "@/components/landing/ContinuousWorkflow";
 import CurvedSection from "@/components/landing/CurvedSection";
 import FeaturesSection from "@/components/landing/FeaturesSection";
@@ -20,7 +22,8 @@ export default function Home() {
         {/* <FeaturesSectionCompact/> */}
         <UltimatePartnerSection/>
         <FirmBenefitsSection imageUrl="/centwise-account-team-d.png"/>
-        <PayrollPipeline/>
+        <DemoCTA/>
+        {/* <PayrollPipeline/> */}
         {/* <PayrollFlow/> */}
         {/* <AnimatedPayrollFlow/> */}
         {/* <AnimatedSystemFlow/> */}
@@ -33,6 +36,7 @@ export default function Home() {
         {/* <Integrations/> */}
         {/* <CurvedSection/> */}
         <WhyChooseUs/>
+        <ContactForm/>
       </main>
     </>
   );

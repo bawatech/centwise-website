@@ -2,6 +2,7 @@
 'use client';
 
 import { LayoutDashboard, FileText, BookOpen, GraduationCap } from 'lucide-react';
+import Button from './components/ui/AnchorButton';
 
 const features = [
   {
@@ -121,9 +122,9 @@ Our all-in-one, do-it-all portal puts accountants and bookkeepers across Canada 
                 Join thousands of accounting professionals across Canada
               </p>
             </div>
-            <button className="px-8 py-3 bg-primary-600 text-white font-medium rounded-lg hover:bg-primary-700 transition-colors whitespace-nowrap">
+            <Button className='px-8 py-3'>
               Get Started Today
-            </button>
+            </Button>
           </div>
         </div>
       </div>

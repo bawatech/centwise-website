@@ -55,7 +55,7 @@ export default function ContactPage() {
       </section>
 
       {/* Map Section (Optional) */}
-      <section className="py-16 bg-neutral-50">
+      {/* <section className="py-16 bg-neutral-50">
         <div className="container-custom">
           <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
             <div className="aspect-[16/9] bg-gradient-to-br from-primary-100 to-primary-200 flex items-center justify-center">
@@ -72,7 +72,7 @@ export default function ContactPage() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* FAQ Teaser */}
       <section className="py-20 bg-white">

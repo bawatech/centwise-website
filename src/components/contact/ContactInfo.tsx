@@ -49,7 +49,7 @@ export default function ContactInfo() {
       </div>
 
       {/* Contact Cards */}
-      <div className="space-y-4">
+      {/* <div className="space-y-4">
         {contactDetails.map((detail, index) => (
           <div
             key={index}
@@ -75,10 +75,10 @@ export default function ContactInfo() {
             </div>
           </div>
         ))}
-      </div>
+      </div> */}
 
       {/* Office Hours */}
-      <div className="bg-gradient-to-br from-primary-600 to-primary-700 rounded-2xl p-8 text-white animate-fade-in" style={{ animationDelay: '0.3s' }}>
+      {/* <div className="bg-gradient-to-br from-primary-600 to-primary-700 rounded-2xl p-8 text-white animate-fade-in" style={{ animationDelay: '0.3s' }}>
         <h4 className="text-xl font-bold mb-4 flex items-center gap-2">
           <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -101,7 +101,7 @@ export default function ContactInfo() {
             <span className="font-semibold text-white">Closed</span>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* Quick Access */}
       <div className="bg-accent-50 border-2 border-accent-200 rounded-xl p-6 animate-fade-in" style={{ animationDelay: '0.4s' }}>

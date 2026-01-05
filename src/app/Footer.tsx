@@ -17,7 +17,7 @@ export default function Footer() {
   {/* Logo */}
   <div className="relative w-[350px] sm:w-[320px] md:w-[300px] h-[72px] bg-white rounded-lg">
     <Image
-      src="/centvise-logo-with-slogan.png"
+      src="/centvise-logo-rect.png"
       alt="Centvise logo"
       fill
       className="object-contain"

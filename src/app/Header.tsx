@@ -22,10 +22,10 @@ export default function Header() {
   const navigation = [
     { name: 'Home', href: '/' },
     { name: 'Resources', href: '/resources' },
-    { name: 'Version 2', href: '/version-2' },
-    { name: 'Version 3', href: '/version-3' },
-    { name: 'Version 4', href: '/version-4' },
-    { name: 'About', href: '#about' },
+    // { name: 'Version 2', href: '/version-2' },
+    // { name: 'Version 3', href: '/version-3' },
+    // { name: 'Version 4', href: '/version-4' },
+    // { name: 'About', href: '#about' },
     { name: 'Contact', href: '/contact' },
   ];
 
@@ -44,7 +44,7 @@ export default function Header() {
   {/* Logo */}
   <div className="relative w-[350px] sm:w-[320px] md:w-[300px] h-[72px]">
     <Image
-      src="/centvise-logo-with-slogan.png"
+      src="/centvise-logo-rect.png"
       alt="Centvise logo"
       fill
       className="object-contain"
@@ -105,14 +105,9 @@ export default function Header() {
                   {item.name}
                 </Link>
               ))}
-              <a
-                href="https://app.centwise.ca"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-primary-600 text-white px-4 py-2.5 rounded-lg hover:bg-primary-700 transition-all font-semibold text-center"
-              >
-                Access App →
-              </a>
+              <Button >
+              Access App →
+            </Button>
             </nav>
           </div>
         )}
