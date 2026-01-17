@@ -1,5 +1,8 @@
 'use client';
 
+import { ACCESS_APP_URL } from "@/config/constants";
+import Link from "next/link";
+
 export default function DemoCTA() {
   return (
     <section className="w-full bg-primary-800 py-24 px-4">
@@ -19,14 +22,23 @@ export default function DemoCTA() {
           {/* Primary button */}
           <button className="px-10 py-4 rounded-lg bg-accent-500 text-black font-semibold
                              hover:bg-accent-600 transition">
-            Book a live walkthrough
+            
+            <Link
+                href={ACCESS_APP_URL}
+              >
+              Book a live walkthrough
+              </Link>
           </button>
 
           {/* Secondary button */}
           <button className="px-10 py-4 rounded-lg border-2 border-accent-500
                              text-white font-semibold
                              hover:bg-accent-500 hover:text-black transition">
+                              <Link
+                href={ACCESS_APP_URL}
+              >
             Explore features
+            </Link>
           </button>
         </div>
       </div>

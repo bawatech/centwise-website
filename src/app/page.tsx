@@ -21,7 +21,7 @@ export default function Home() {
         {/* <Integrations/> */}
         {/* <CurvedSection/> */}
         <WhyChooseUs/>
-        <ContactForm/>
+        {/* <ContactForm/> */}
       </main>
     </>
   );

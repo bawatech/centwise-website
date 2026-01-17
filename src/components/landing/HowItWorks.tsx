@@ -1,6 +1,8 @@
 'use client';
 
+import Link from "next/link";
 import Button from "../ui/AnchorButton";
+import { ACCESS_APP_URL } from "@/config/constants";
 
 export default function HowItWorks() {
   const steps = [
@@ -77,7 +79,12 @@ export default function HowItWorks() {
         {/* CTA */}
         <div className="text-center mt-16 animate-fade-in">
           <Button>
-            Schedule a Demo →
+
+            <Link
+                href={ACCESS_APP_URL}
+              >
+                          Schedule a Demo →
+              </Link>
           </Button>
         </div>
       </div>

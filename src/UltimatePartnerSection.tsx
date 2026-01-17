@@ -3,6 +3,8 @@
 
 import { LayoutDashboard, FileText, BookOpen, GraduationCap } from 'lucide-react';
 import Button from './components/ui/AnchorButton';
+import Link from 'next/link';
+import { ACCESS_APP_URL } from './config/constants';
 
 const features = [
   {
@@ -123,7 +125,13 @@ Our all-in-one, do-it-all portal puts accountants and bookkeepers across Canada 
               </p>
             </div>
             <Button className='px-8 py-3'>
-              Get Started Today
+              
+              
+               <Link
+                href={ACCESS_APP_URL}
+              >
+              <span className="relative">Get Started Today</span>
+              </Link>
             </Button>
           </div>
         </div>

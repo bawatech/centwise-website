@@ -1,6 +1,8 @@
 'use client';
 
+import Link from "next/link";
 import Button from "../ui/AnchorButton";
+import { ACCESS_APP_URL } from "@/config/constants";
 
 export default function ContactInfo() {
   const contactDetails = [
@@ -119,7 +121,11 @@ export default function ContactInfo() {
               Access our payroll app directly or schedule a live demo with our team.
             </p>
             <Button>
-              Access App →
+             <Link
+                href={ACCESS_APP_URL}
+              >
+               Access App →
+              </Link>
               </Button>
           </div>
         </div>

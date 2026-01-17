@@ -1,5 +1,6 @@
 'use client';
 
+import { ACCESS_APP_URL } from '@/config/constants';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -44,7 +45,7 @@ export default function Footer() {
             </p>
 
             {/* Socials */}
-            <div className="flex items-center gap-3 mt-6">
+            {/* <div className="flex items-center gap-3 mt-6">
               {[
                 { label: 'LinkedIn', icon: LinkedInIcon },
                 { label: 'Twitter', icon: TwitterIcon },
@@ -58,7 +59,7 @@ export default function Footer() {
                   <Icon className="h-4 w-4 text-neutral-300 group-hover:text-white" />
                 </a>
               ))}
-            </div>
+            </div> */}
           </div>
 
           {/* Links */}
@@ -68,7 +69,7 @@ export default function Footer() {
               { label: 'Home', href: '/' },
               { label: 'Resources', href: '/resources' },
               { label: 'Contact', href: '/contact' },
-              { label: 'Access App', href: 'https://app.centvise.ca', external: true },
+              { label: 'Access App', href: ACCESS_APP_URL, external: true },
             ]}
           />
 
@@ -163,21 +164,21 @@ function ContactItem({
 
 /* ---------------- Icons ---------------- */
 
-function LinkedInIcon(props: any) {
-  return (
-    <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
-      <path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.27c-.97 0-1.75-.79-1.75-1.76s.78-1.76 1.75-1.76 1.75.79 1.75 1.76-.78 1.76-1.75 1.76zm13.5 12.27h-3v-5.6c0-3.37-4-3.11-4 0v5.6h-3v-11h3v1.77c1.4-2.59 7-2.78 7 2.48v6.75z" />
-    </svg>
-  );
-}
+// function LinkedInIcon(props: any) {
+//   return (
+//     <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
+//       <path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.27c-.97 0-1.75-.79-1.75-1.76s.78-1.76 1.75-1.76 1.75.79 1.75 1.76-.78 1.76-1.75 1.76zm13.5 12.27h-3v-5.6c0-3.37-4-3.11-4 0v5.6h-3v-11h3v1.77c1.4-2.59 7-2.78 7 2.48v6.75z" />
+//     </svg>
+//   );
+// }
 
-function TwitterIcon(props: any) {
-  return (
-    <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
-      <path d="M23 3a10.9 10.9 0 01-3.14 1.53A4.48 4.48 0 0016 3c-2.63 0-4.78 2.14-4.78 4.78 0 .37.04.73.12 1.07C7.69 8.63 4.07 6.69 1.64 3.7a4.79 4.79 0 00-.65 2.4c0 1.66.85 3.13 2.14 3.99a4.45 4.45 0 01-2.17-.6v.06c0 2.32 1.65 4.26 3.83 4.7a4.48 4.48 0 01-2.16.08c.61 1.91 2.38 3.3 4.48 3.34A9 9 0 010 19.54a12.72 12.72 0 006.92 2.03c8.3 0 12.84-6.87 12.84-12.84 0-.2 0-.39-.01-.59A9.2 9.2 0 0023 3z" />
-    </svg>
-  );
-}
+// function TwitterIcon(props: any) {
+//   return (
+//     <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
+//       <path d="M23 3a10.9 10.9 0 01-3.14 1.53A4.48 4.48 0 0016 3c-2.63 0-4.78 2.14-4.78 4.78 0 .37.04.73.12 1.07C7.69 8.63 4.07 6.69 1.64 3.7a4.79 4.79 0 00-.65 2.4c0 1.66.85 3.13 2.14 3.99a4.45 4.45 0 01-2.17-.6v.06c0 2.32 1.65 4.26 3.83 4.7a4.48 4.48 0 01-2.16.08c.61 1.91 2.38 3.3 4.48 3.34A9 9 0 010 19.54a12.72 12.72 0 006.92 2.03c8.3 0 12.84-6.87 12.84-12.84 0-.2 0-.39-.01-.59A9.2 9.2 0 0023 3z" />
+//     </svg>
+//   );
+// }
 
 function LocationIcon(props: any) {
   return (

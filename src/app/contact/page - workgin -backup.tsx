@@ -48,55 +48,7 @@ export default function ContactPage() {
 
             {/* Right - Contact Form */}
             <div>
-               <section className="bg-white">
-        <div className="container-custom">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl lg:text-4xl font-bold text-neutral-900 mb-4">
-                Frequently Asked Questions
-              </h2>
-              <p className="text-lg text-neutral-600">
-                Quick answers to common questions about Centvise
-              </p>
-            </div>
-
-            <div className="grid gap-6">
-              {[
-                {
-                  question: 'How long does implementation take?',
-                  answer: 'Most clients are up and running within 1-2 weeks. Our onboarding team guides you through every step.',
-                },
-                {
-                  question: 'Is my data secure?',
-                  answer: 'Absolutely. We use bank-level 256-bit encryption and are SOC 2 Type II certified for maximum security.',
-                },
-                {
-                  question: 'Can I try before I buy?',
-                  answer: 'Yes! We offer a 30-day free trial with full access to all features. No credit card required.',
-                },
-                {
-                  question: 'Do you support multiple provinces?',
-                  answer: 'Yes, Centvise supports all Canadian provinces and territories with automatic tax rate updates.',
-                },
-              ].map((faq, index) => (
-                <div
-                  key={index}
-                  className="bg-neutral-50 rounded-xl p-6 hover:bg-primary-50 transition-colors animate-fade-in"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  <h3 className="text-lg font-bold text-neutral-900 mb-2 flex items-start gap-3">
-                    <svg className="w-6 h-6 text-primary-600 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    {faq.question}
-                  </h3>
-                  <p className="text-neutral-600 pl-9">{faq.answer}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+              <ContactForm />
             </div>
           </div>
         </div>
@@ -123,7 +75,7 @@ export default function ContactPage() {
       </section> */}
 
       {/* FAQ Teaser */}
-      {/* <section className="py-20 bg-white">
+      <section className="py-20 bg-white">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
@@ -171,7 +123,7 @@ export default function ContactPage() {
             </div>
           </div>
         </div>
-      </section> */}
+      </section>
     </div>
   );
 }

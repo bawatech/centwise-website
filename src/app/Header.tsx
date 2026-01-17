@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Button from '@/components/ui/AnchorButton';
 import Image from 'next/image';
 import clsx from 'clsx';
+import { ACCESS_APP_URL } from '@/config/constants';
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -78,7 +79,12 @@ export default function Header() {
             ))}
 
             <Button>
-              Access App →
+              
+              <Link
+                href={ACCESS_APP_URL}
+              >
+               Access App →
+              </Link>
             </Button>
           </nav>
 
@@ -116,7 +122,11 @@ export default function Header() {
               ))}
               <div className="px-4 pt-2">
                 <Button className="w-full">
-                  Access App →
+                  <Link
+                href={ACCESS_APP_URL}
+              >
+               Access App →
+              </Link>
                 </Button>
               </div>
             </nav>

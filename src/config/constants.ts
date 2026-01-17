@@ -25,3 +25,5 @@ export const bankDetails = {
   accountHolder:'SURYA SHAKTI VYAAPAR PRIVATE LIMITED',
   qrPath:'/clapcredit-payment-qrcode.png'
 }
+
+export const ACCESS_APP_URL = 'https://accountants.centvise.com'
