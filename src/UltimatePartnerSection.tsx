@@ -22,7 +22,7 @@ const features = [
   {
     icon: <BookOpen className="w-6 h-6" />,
     title: "Key Insights & Resources",
-    description: "Access key insights and resources such as tax tools, industry reports and the latest thought leadership through ADP's Resource Center",
+    description: "Access key insights and resources such as tax tools, Vacation Pay, Overtime and other provincial legislature",
     gradient: "from-accent-500 to-accent-600"
   },
   {
